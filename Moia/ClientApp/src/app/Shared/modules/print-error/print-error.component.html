@@ -1,0 +1,24 @@
+<div *ngIf="formControl?.touched && formControl?.invalid" class="text-danger">
+  <div *ngIf="formControl?.errors?.['required']" class="text-dir">
+    <span> العنصر مطلوب </span>
+  </div>
+  <div *ngIf="formControl?.errors?.['email']" class="text-dir">
+    أدخل بريد إلكترونى صحيح
+  </div>
+  <div *ngIf="formControl?.errors?.['minlength']">أكتب الكود بشكل كامل</div>
+  <div *ngIf="formControl?.errors?.['maxlength']">
+    {{ "ErrorMaxlength" | translate : { length: maxlength } }}
+  </div>
+  <div *ngIf="formControl?.errors?.['min']">
+    {{ "ErrorMin" | translate : { number: min } }}
+  </div>
+  <div *ngIf="formControl?.errors?.['max']">
+    <!-- {{ "ErrorMax" | translate : { number: max } }} -->
+    أكتب الكود بشكل كامل
+  </div>
+  <div *ngIf="formControl?.errors?.['pattern']">
+    <p>
+      {{ patternKey && (patternKey | translate) }}
+    </p>
+  </div>
+</div>

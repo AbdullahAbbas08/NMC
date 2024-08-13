@@ -1,0 +1,527 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <div class="contain">
+      <div class="row content d-flex align-items-center form-body">
+        <div class="row my-5 d-flex flex-row-reverse">
+          <!-- الإسم قبل الإسلام -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameBeforeFristAr"
+                    tabindex="1"
+                    (keypress)="validateArabicChars($event)"
+                    [tabIndex]="1"
+                  />
+                  <label class="required" for="inputtext">
+                    {{ "namebefore" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameBeforeFristAr')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- الإسم الأوسط -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameBeforeMiddleAr"
+                    tabindex="2"
+                    (keypress)="validateArabicChars($event)"
+                    [tabIndex]="2"
+                  />
+                  <label for="inputtext">
+                    {{ "namemiddle" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameBeforeMiddleAr')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- إسم العائلة -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameBeforeLastAr"
+                    tabindex="3"
+                    (keypress)="validateArabicChars($event)"
+                    [tabIndex]="3"
+                  />
+                  <label class="required" for="inputtext">
+                    {{ "familyname" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameBeforeLastAr')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- EN الإسم قبل الإسلام -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameBeforeFristEn"
+                    tabindex="1"
+                    (keypress)="validateEnglishChars($event)"
+                    [tabIndex]="4"
+                  />
+                  <label class="required" for="inputtext">
+                    {{ "namebeforeenglish" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameBeforeFristEn')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- EN الإسم الأوسط -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameBeforeMiddleEn"
+                    tabindex="2"
+                    (keypress)="validateEnglishChars($event)"
+                    [tabIndex]="5"
+                  />
+                  <label for="inputtext">
+                    {{ "namemiddleenglish" | translate }}</label
+                  >
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameBeforeMiddleEn')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- EN إسم العائلة -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameBeforeLastEn"
+                    tabindex="3"
+                    (keypress)="validateEnglishChars($event)"
+                    [tabIndex]="6"
+                  />
+                  <label class="required" for="inputtext">
+                    {{ "familynameenglish" | translate }}</label
+                  >
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameBeforeLastEn')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- الإسم بعد الإسلام -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameAfter"
+                    [tabIndex]="7"
+                  />
+                  <label class="required" for="inputtext">{{
+                    "nameafter" | translate
+                  }}</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameAfter')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!--En الإسم بعد الإسلام -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="nameAfterEn"
+                    [tabIndex]="8"
+                    (keypress)="validateEnglishChars($event)"
+                  />
+                  <label class="required" for="inputtext"
+                    >{{ "nameafterenglish" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nameAfterEn')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- تاريخ الإسلام الميلادى -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-calendar
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    formControlName="islamDate"
+                    appendTo="body"
+                    [touchUI]="true"
+                    [tabindex]="9"
+                  ></p-calendar>
+                  <label class="required" for="inputtext">
+                    {{ "datemilady" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('islamDate')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- تاريخ الإسلام الهجرى -->
+          <!-- <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-calendar
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    [style.width]="'100%'"
+                    formControlName="islamDateHijry"
+                    appendTo="body"
+                    [touchUI]="true"
+                    [tabindex]="6"
+                  ></p-calendar>
+                  <label for="inputtext">تاريخ الإسلام الهجرى</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('islamDateHijry')"
+              ></app-print-error>
+            </div>
+          </div> -->
+
+          <!-- أسم الداعية -->
+          <!-- <div class="col-12 col-md-8 offset-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="preacherName"
+                    [tabIndex]="10"
+                  />
+                  <label for="inputtext">أسم الداعية</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('preacherName')"
+              ></app-print-error>
+            </div>
+          </div> -->
+
+          <!-- الشاهد الأول -->
+          <div class="col-12 col-md-6 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="witnessList"
+                    formControlName="firstWitness"
+                    optionLabel="name"
+                    appendTo="body"
+                    [tabindex]="11"
+                    (onChange)="getFirstW($event)"
+                    [autoDisplayFirst]="false"
+                  ></p-dropdown>
+                  <label class="required" for="inputtext"
+                    >{{ "fwitness" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('firstWitness')"
+              ></app-print-error>
+            </div>
+          </div>
+          <!-- إضافة شاهد أول -->
+          <div
+            class="col-12 col-md-6 basic d-flex align-items-center justify-content-start plus-icon"
+          >
+            <i class="fa-solid fa-circle-plus" (click)="showDialog()"></i>
+            <span class="px-3" (click)="showDialog(); type = 1">
+              {{ "addwitness" | translate }}
+            </span>
+          </div>
+
+          <!-- الشاهد الثانى -->
+          <div class="col-12 col-md-6 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="witnessList"
+                    optionLabel="name"
+                    appendTo="body"
+                    formControlName="secondWitness"
+                    [tabindex]="12"
+                    [autoDisplayFirst]="false"
+                    (onChange)="getSecondW($event)"
+
+                  ></p-dropdown>
+                  <label class="required" for="inputtext">{{
+                    "twitness" | translate
+                  }}</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('secondWitness')"
+              ></app-print-error>
+            </div>
+          </div>
+          <!-- إضافة شاهد ثانلا -->
+          <div
+            class="col-12 col-md-6 basic d-flex align-items-center justify-content-start plus-icon"
+          >
+            <i (click)="showDialog()" class="fa-solid fa-circle-plus"></i>
+            <span (click)="showDialog(); type = 2" class="px-3">
+              {{ "addswitness" | translate }}</span
+            >
+          </div>
+
+          <!-- الداعيه  -->
+          <div class="col-12 col-md-6 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="PresherList"
+                    formControlName="preacherName"
+                    optionLabel="title"
+                    appendTo="body"
+                    [tabindex]="11"
+                    [autoDisplayFirst]="false"
+                  ></p-dropdown>
+                  <label for="inputtext">الداعيه</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('preacherName')"
+              ></app-print-error>
+            </div>
+          </div>
+          <!-- إضافة  الداعيه -->
+          <div
+            class="col-12 col-md-6 basic d-flex align-items-center justify-content-start plus-icon"
+          >
+            <i class="fa-solid fa-circle-plus" (click)="Emamdisplay = true"></i>
+            <span class="px-3" (click)="Emamdisplay = true"
+              >{{ "addnewpresher" | translate }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row next form-footer">
+        <button
+          type="submit"
+          class="btn mx-5"
+          [disabled]="form.invalid"
+          tabindex="10"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+          <span> {{ "next" | translate }} </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4>{{ "addwitness" | translate }}</h4>
+    </div>
+  </ng-template>
+  <!-- <app-witness-form (display)="CancelDialog($event)"></app-witness-form> -->
+  <div class="row dialog">
+    <div class="col-12">
+      <div class="form-group text-dir">
+        <input
+          type="text"
+          class="form-control"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          minlength="1"
+          maxlength="100"
+          pInputText
+          [(ngModel)]="model.name"
+          placeholder="{{ 'firstwitness' | translate }} *"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group text-dir">
+        <input
+          type="text"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          minlength="10"
+          maxlength="10"
+          class="form-control"
+          pInputText
+          [(ngModel)]="model.identity"
+          placeholder="{{ 'identity' | translate }} * "
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group text-dir">
+        <input
+          type="text"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          minlength="4"
+          maxlength="13"
+          class="form-control"
+          pInputText
+          [(ngModel)]="model.mobile"
+          placeholder="{{ 'mobile' | translate }}"
+        />
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <div>
+        <div class="btn btn-danger px-3 py-1 mx-1" (click)="CancelDialog()">
+          {{ "cancel" | translate }}
+        </div>
+        <button
+          [disabled]="
+            !(model.identity && model.name && model.identity.length == 10)
+          "
+          class="btn btn-info px-3 py-1 mx-1"
+          (click)="Add()"
+        >
+          {{ "save" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="Emamdisplay"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4 style="font-family: 'Almarai-Bold'">
+        {{ "addnewemam" | translate }}
+      </h4>
+    </div>
+  </ng-template>
+  <div class="row dialog">
+    <div class="col-12">
+      <div class="form-group text-dir">
+        <span class="label-input" style="font-family: 'Almarai-Bold'">
+          {{ "name" | translate }}</span
+        >
+        <input
+          type="text"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          minlength="1"
+          maxlength="100"
+          class="form-control"
+          pInputText
+          [(ngModel)]="SelectEdentity.title"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group text-dir">
+        <span class="label-input" style="font-family: 'Almarai-Bold'">
+          {{ "identity" | translate }}
+        </span>
+        <input
+          type="text"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          minlength="1"
+          maxlength="16"
+          class="form-control"
+          pInputText
+          [(ngModel)]="SelectEdentity.identity"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="form-group text-dir">
+        <span class="label-input" style="font-family: 'Almarai-Bold'">
+          {{ "mobile" | translate }}</span
+        >
+        <input
+          type="text"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          minlength="4"
+          maxlength="13"
+          class="form-control"
+          pInputText
+          [(ngModel)]="SelectEdentity.contactNumber"
+        />
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <div>
+        <div
+          class="btn btn-danger px-3 py-1 mx-1"
+          (click)="Emamdisplay = false"
+        >
+          {{ "cancel" | translate }}
+        </div>
+        <div class="btn btn-info px-3 py-1 mx-1" (click)="AddPresher()">
+          {{ "save" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>

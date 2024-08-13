@@ -1,0 +1,108 @@
+@import "../../../../../scss/Muslime_Style.scss";
+
+.form {
+  height: 100%;
+  .contain {
+    height: 100%;
+    .row {
+      width: 100%;
+      height: fit-content;
+    }
+    .form-body {
+      height: 85%;
+    }
+    .form-footer {
+      height: 10%;
+    }
+  }
+}
+
+.basic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+.plus-icon {
+  font-size: 16px;
+  color: #b0b0b0;
+  i {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  span {
+    cursor: pointer;
+  }
+}
+
+.main {
+  .child {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    img {
+      width: 174px;
+      height: 238px;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  }
+}
+
+.btn-danger {
+  background-color: #b62525 !important;
+  color: #fff !important;
+}
+
+.btn-success {
+  background-color: green !important;
+  color: #fff !important;
+}
+
+.btn-primary {
+  background-color: #007bff !important;
+  color: #fff !important;
+}
+
+.font-family {
+  font-family: "Almarai-Regular" !important;
+  padding-top: 10px;
+}
+
+.image-wrapper {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eye-icon {
+  color: white;
+  font-size: 2rem;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.image-wrapper:hover .image {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}

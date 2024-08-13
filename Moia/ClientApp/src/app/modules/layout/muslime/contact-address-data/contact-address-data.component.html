@@ -1,0 +1,481 @@
+<div class="container">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="row content d-flex justify-content-center align-items-center mt-2 form"
+  >
+    <div class="contain">
+      <div
+        class="row content d-flex justify-content-center align-items-center my-2 form-body"
+      >
+        <div>
+          <div
+            formGroupName="originalCountry"
+            class="row personal-data d-flex flex-row-reverse py-4"
+          >
+            <label class="header">
+              {{ "originalcountrytitle" | translate }}
+            </label>
+
+            <!-- الدولة -->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <p-dropdown
+                      [options]="Countries"
+                      optionLabel="nameAr"
+                      formControlName="country"
+                      appendTo="body"
+                      [filter]="true"
+                      filterBy="nameAr"
+                      [tabindex]="1"
+                      [autoDisplayFirst]="false"
+                    ></p-dropdown>
+                    <label for="inputtext">{{ "country" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('originalCountry.country')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- المدينة -->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="city"
+                      [tabindex]="2"
+                    />
+                    <label for="inputtext">{{ "city" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('originalCountry.city')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- رقم الشارع -->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="street"
+                      [tabindex]="3"
+                      (keypress)="validateNumericInput($event)"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="5"
+                    />
+                    <label for="inputtext">{{ "streetno" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('originalCountry.street')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- المنطقة -->
+            <div class="col-12 col-md-6 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="region"
+                      [tabindex]="4"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="150"
+                    />
+                    <label for="inputtext">
+                      {{ "crossway" | translate }}
+                    </label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('originalCountry.region')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- عنوان الشقة -->
+            <div class="col-12 col-md-6 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      placeholder=" "
+                      formControlName="doorNumber"
+                      [tabindex]="5"
+                      (keypress)="validateNumericInput($event)"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="150"
+                    />
+                    <label for="inputtext"> {{ "homeno" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('originalCountry.doorNumber')"
+                ></app-print-error>
+              </div>
+            </div>
+          </div>
+
+          <div
+            formGroupName="currentResidence"
+            class="row personal-data d-flex flex-row-reverse py-4"
+            [tabindex]="6"
+          >
+            <label class="header">
+              {{ "accommodationaddress" | translate }}
+            </label>
+
+            <!-- المدينة -->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="city"
+                      [tabindex]="6"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="0"
+                      maxlength="150"
+                    />
+                    <label class="required" for="inputtext">{{ "city" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('currentResidence.city')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- الحى -->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="region"
+                      [tabindex]="7"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="100"
+                    />
+                    <label for="inputtext">{{ "hay" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('currentResidence.region')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- رقم الشارع -->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="street"
+                      [tabindex]="8"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="50"
+                    />
+                    <label for="inputtext">{{ "street" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('currentResidence.street')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- المنزل -->
+            <div class="col-12 col-md-8 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-8">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="doorNumber"
+                      [tabindex]="9"
+                      (keypress)="validateNumericInput($event)"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="5"
+                    />
+                    <label for="inputtext"> {{ "homeno" | translate }}</label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('currentResidence.doorNumber')"
+                ></app-print-error>
+              </div>
+            </div>
+
+            <!-- رقم للتواصل فى الحالات الطارئة-->
+            <div class="col-12 col-md-4 basic">
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <input
+                      pInputText
+                      type="text"
+                      formControlName="emergencyNumber"
+                      (keypress)="validateNumericInput($event)"
+                      [tabindex]="10"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      minlength="1"
+                      maxlength="13"
+                    />
+                    <label for="inputtext"
+                      >{{ "emergencyno" | translate }}
+                    </label>
+                  </span>
+                </div>
+                <app-print-error
+                  [control]="form.get('currentResidence.emergencyNumber')"
+                ></app-print-error>
+              </div>
+            </div>
+          </div>
+
+          <div formGroupName="contactData" class="row personal-data mb-3 py-4">
+            <label class="header">{{ "contactdata" | translate }}</label>
+            <div class="col-12 contact-data m-0 p-0">
+              <div class="row d-flex flex-row-reverse">
+                <!-- الجوال -->
+                <!-- <div class="col-12 col-md-6 my-1 d-flex justify-content-center">
+                  <div class="form-group">
+                    <div class="field">
+                      <span class="p-float-label">
+                        <p-inputMask
+                          mask="( 999 ) 99  999  9999 "
+                          placeholder="   ( 966 ) 00  000  0000 "
+                          formControlName="phoneNumber"
+                          tabindex="12"
+                          dir="ltr"
+                        ></p-inputMask>
+                        <label for="inputtext">الجوال </label>
+                      </span>
+                    </div>
+                    <app-print-error
+                      [control]="form.get('contactData.phoneNumber')"
+                    ></app-print-error>
+                  </div>
+
+                  <div class="phone">
+                    <span> * الجوال </span>
+                    <p-inputMask
+                      mask="( 999 ) 99  999  9999 "
+                      placeholder="   ( 966 ) 00  000  0000 "
+                      formControlName="phoneNumber"
+                      tabindex="12"
+                      dir="ltr"
+                    ></p-inputMask>
+                    <app-print-error
+                      [control]="form.get('contactData.phoneNumber')"
+                    ></app-print-error>
+                  </div>
+                </div> -->
+
+                <!-- الجوال -->
+                <div class="col-12 col-md-6 basic">
+                  <div class="form-group">
+                    <div class="field col-12 md:col-6">
+                      <span class="p-float-label">
+                        <input
+                          pInputText
+                          type="text"
+                          formControlName="phoneNumber"
+                          [tabindex]="11"
+                          (keypress)="validateNumericInput($event)"
+                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                          minlength="1"
+                          maxlength="13"
+                        />
+                        <label class="required" for="inputtext"
+                          >{{ "mobile" | translate }}
+                        </label>
+                      </span>
+                    </div>
+                    <app-print-error
+                      [control]="form.get('contactData.phoneNumber')"
+                    ></app-print-error>
+                  </div>
+                </div>
+
+                <!-- المنزل -->
+                <div class="col-12 col-md-6 basic">
+                  <div class="form-group">
+                    <div class="field col-12 md:col-6">
+                      <span class="p-float-label">
+                        <input
+                          pInputText
+                          type="text"
+                          formControlName="homeNumber"
+                          [tabindex]="12"
+                          (keypress)="validateNumericInput($event)"
+                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                          minlength="1"
+                          maxlength="13"
+                        />
+                        <label for="inputtext">{{ "home" | translate }} </label>
+                      </span>
+                    </div>
+                    <app-print-error
+                      [control]="form.get('contactData.homeNumber')"
+                    ></app-print-error>
+                  </div>
+                </div>
+
+                <!-- email -->
+                <div class="col-12 col-md-6 basic">
+                  <div class="form-group">
+                    <div class="field col-12 md:col-6">
+                      <span class="p-float-label">
+                        <input
+                          pInputText
+                          type="text"
+                          formControlName="email"
+                          [tabindex]="13"
+                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                          minlength="1"
+                          maxlength="50"
+                        />
+                        <label for="inputtext"
+                          >{{ "email" | translate }}
+                        </label>
+                      </span>
+                    </div>
+                    <app-print-error
+                      [control]="form.get('contactData.email')"
+                    ></app-print-error>
+                  </div>
+                </div>
+
+                <!-- email -->
+                <!-- <div class="col-12 col-md-6 my-1 d-flex justify-content-center">
+                  <div class="email">
+                    <span class="special"> البريد الإلكترونى </span>
+                    <div class="p-inputgroup">
+                      <span class="p-inputgroup-addon">Email</span>
+                      <input
+                        type="text"
+                        pInputText
+                        formControlName="email"
+                        tabindex="14"
+                      />
+                      <app-print-error
+                        [control]="form.get('contactData.email')"
+                      ></app-print-error>
+                    </div>
+                  </div>
+                </div> -->
+
+                <!-- العمل -->
+                <div class="col-12 col-md-6 my-1 d-flex justify-content-center">
+                  <div class="form-group">
+                    <div class="field col-12 md:col-6">
+                      <span class="p-float-label">
+                        <input
+                          pInputText
+                          type="text"
+                          formControlName="workNumber"
+                          [tabindex]="14"
+                          (keypress)="validateNumericInput($event)"
+                          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                          minlength="1"
+                          maxlength="13"
+                        />
+                        <label for="inputtext">{{ "work" | translate }} </label>
+                      </span>
+                    </div>
+                    <app-print-error
+                      [control]="form.get('contactData.workNumber')"
+                    ></app-print-error>
+                  </div>
+
+                  <!-- <div class="phone">
+                    <span> * العمل </span>
+                    <p-inputMask
+                      mask="( 999 ) 99  999  9999 "
+                      placeholder="   ( 966 ) 00  000  0000 "
+                      formControlName="workNumber"
+                      tabindex="15"
+                    ></p-inputMask>
+                    <app-print-error
+                      [control]="form.get('contactData.workNumber')"
+                    ></app-print-error>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row next">
+        <div class="d-none d-lg-block" style="width: 100%">
+          <div class="next-content d-flex justify-content-between">
+            <button
+              class="btn mx-5"
+              type="submit"
+              [disabled]="form.invalid"
+              tabindex="16"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> {{ "next" | translate }} </span>
+            </button>
+
+            <button type="button" class="btn mx-5 back" (click)="Back()">
+              <span> {{ "back" | translate }} </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="d-flex justify-content-between d-lg-none d-md-block small-screen"
+          style="width: 100%"
+        >
+          <div class="next-content d-flex justify-content-between px-5 py-2">
+            <div class="next-back-btn-small next-small">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> {{ "next" | translate }} </span>
+            </div>
+
+            <div class="next-back-btn-small back" (click)="Back()">
+              <span> {{ "back" | translate }} </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

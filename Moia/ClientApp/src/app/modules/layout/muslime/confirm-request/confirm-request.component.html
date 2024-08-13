@@ -1,0 +1,72 @@
+    <div class="container">
+
+
+
+            <form class=" form pb-sm-4"(ngSubmit)="submit()"  [formGroup]="formGroup">
+                <div class="contain">
+                    <div class="row">
+                     
+                    </div>
+                    <div class="row content d-flex justify-content-center align-items-end px-4 form-body">
+                      <div class="col-10 d-flex justify-content-center align-items-center">
+                        <h3>
+                          {{'confirmation'|translate}}
+                        </h3>
+                      </div>
+                        <div class=" form-group d-flex justify-content-center align-items-start text-center">
+                          <label class="confirmation" for="confirmation">{{ "orderApprovalForMuslim" | translate }}</label>
+                          <p-checkbox
+                            (onChange)="toggleConfirm()"
+                            formControlName="confirm"
+                            value="isChecked"
+                            inputId="confirmation">
+                          </p-checkbox>
+                        </div>
+                      </div>
+
+                    <div class="row next d-flex justify-content-between    form-footer px-4 pb-3">
+                      <div>
+                        <button
+                        type="submit"
+                        class="btn mx-2 btn-primary my-2"
+                        [disabled]="!isChecked"
+                        >
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span> {{ "send" | translate }} </span>
+                      </button>
+                      <button
+                        type="button"
+                        class="btn mx-2 btn-success my-2"
+                        (click)="Save()"
+                
+                       
+                      >
+                        <span> {{ "save" | translate }} </span>
+                        <i class="fa-solid fa-floppy-disk px-2"></i>
+                      </button>
+
+                      </div>
+                       
+
+                         
+                        <button type="button" class="btn mx-2 back my-2" (click)="Back()">
+                          <span> {{ "back" | translate }} </span>
+                          <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                      </div>
+                </div>
+            </form>
+
+            
+    
+
+        
+    </div>
+
+
+
+
+
+
+
+

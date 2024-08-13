@@ -1,0 +1,37 @@
+@mixin button {
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  text-align: center !important;
+  border-radius: 6px;
+}
+
+.btn-v1 {
+  @include button;
+  background: var(--site-color-1);
+  color: var(--text-light);
+}
+
+.btn-v2 {
+  @include button;
+  background: var(--site-color-2);
+  color: var(--text-dark);
+}
+
+.btn-v3 {
+  @include button;
+  background: var(--success-color);
+  color: var(--text-light);
+}
+
+.btn-v4 {
+  @include button;
+  background: var(--danger-color);
+  color: var(--text-light);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background: var(--bg-grey) !important;
+  color: var(--text-dark) !important;
+}

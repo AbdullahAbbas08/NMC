@@ -1,0 +1,304 @@
+<div class="container">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="row content d-flex justify-content-center align-items-center mt-2 form"
+  >
+    <div class="contain">
+      <div
+        class="row content d-flex justify-content-center align-items-center mt-2 form-body"
+      >
+        <div>
+          <div formGroupName="familyInformation" class="col-12">
+            <div class="row personal-data d-flex flex-row-reverse py-4">
+              <label class="header">معلومات عن الأسرة</label>
+
+              <!-- عدد افراد الاسرة -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="number"
+                        formControlName="membersNumber"
+                        (keypress)="validateNumericInput($event)"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="7"
+                      />
+                      <label for="inputtext">عدد افراد الاسرة </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('familyInformation.membersNumber')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!--  عدد الاولاد -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="number"
+                        formControlName="boysNumber"
+                        (keypress)="validateNumericInput($event)"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="7"
+                      />
+                      <label for="inputtext">عدد الاولاد </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('familyInformation.boysNumber')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!--  عدد البنات -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="number"
+                        formControlName="girlsNumber"
+                        (keypress)="validateNumericInput($event)"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="7"
+                      />
+                      <label for="inputtext"> عدد البنات </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('familyInformation.girlsNumber')"
+                  ></app-print-error>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div formGroupName="work" class="col-12 mt-5">
+            <div class="row personal-data d-flex flex-row-reverse py-4">
+              <label class="header">العمل</label>
+
+              <!-- اسم الشركة  -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="companyTitle"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="150"
+                      />
+                      <label for="inputtext"> أسم الشركة </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.companyTitle')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!--  المهنة -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="profession"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="150"
+                      />
+                      <label class="required" for="inputtext"> المهنة </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.profession')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!--  المدير المباشر / الكفيل -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="directManager"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="150"
+                      />
+                      <label for="inputtext"> المدير المباشر / الكفيل </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.directManager')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!-- المدينة  -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="city"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="150"
+                      />
+                      <label for="inputtext"> المدينة</label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.city')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!-- الشارع  -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="street"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="150"
+                      />
+                      <label for="inputtext"> الشارع</label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.street')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!-- صندوق البريد  -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="postalBox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="50"
+                      />
+                      <label for="inputtext"> صندوق البريد </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.postalBox')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!-- العنوان  -->
+              <div class="col-12 col-md-8 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-8">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="address"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="500"
+                      />
+                      <label for="inputtext"> العنوان</label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.address')"
+                  ></app-print-error>
+                </div>
+              </div>
+
+              <!-- رمز البريد  -->
+              <div class="col-12 col-md-4 basic">
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <input
+                        pInputText
+                        type="text"
+                        formControlName="postalCode"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1"
+                        maxlength="50"
+                      />
+                      <label for="inputtext"> رمز البريد </label>
+                    </span>
+                  </div>
+                  <app-print-error
+                    [control]="form.get('work.postalCode')"
+                  ></app-print-error>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row next">
+        <div class="d-none d-lg-block" style="width: 100%">
+          <div class="next-content d-flex justify-content-between">
+            <button type="submit" class="btn mx-5" [disabled]="form.invalid">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> التالى </span>
+            </button>
+
+            <button type="button" class="btn mx-5 back" (click)="Back()">
+              <span> السابق </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="d-flex justify-content-between d-lg-none d-md-block small-screen"
+          style="width: 100%"
+        >
+          <div class="next-content d-flex justify-content-between px-5 py-2">
+            <div class="next-back-btn-small next-small" (click)="navigate()">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> التالى </span>
+            </div>
+
+            <div class="next-back-btn-small back" (click)="Back()">
+              <span> السابق </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

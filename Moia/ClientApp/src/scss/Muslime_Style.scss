@@ -1,0 +1,95 @@
+// ------------- child -----------------------
+.container {
+  height: 100%;
+}
+
+.content {
+  overflow-y: auto;
+  width: 100%;
+  height: 85%;
+  margin: 0px;
+  padding: 0px;
+  //   background-color: rgb(47, 176, 81);
+  
+}
+
+.next {
+  width: 100%;
+  min-height: 12%;
+  margin: 0px;
+  padding: 0px;
+  // background-color: rgb(112, 109, 109);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .btn {
+    width: 200px;
+    height: 40px;
+    background-color: #64995f;
+    color: #fff;
+    outline: none;
+  }
+
+  .back {
+    background-color: #6c6c6c;
+  }
+
+  .next-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .next-back-btn-small {
+      border: 1px solid #aaa;
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+    }
+    .next-small {
+      background-color: #64995f;
+    }
+  }
+}
+
+.dir-input {
+  direction: rtl;
+}
+
+.label-input {
+  float: right;
+  padding-bottom: 4px;
+}
+
+.Titles {
+  width: 100%;
+  color: #a4a4a4;
+  background-color: #ddd;
+  user-select: none;
+  color: #565151 !important;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+ background-color: #fff;
+}
+
+
+.text-dir {
+  direction: rtl;
+}
+
+.basic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+.form-group {
+  width: 100%;
+  .field {
+    padding: 0 !important;
+  }
+}

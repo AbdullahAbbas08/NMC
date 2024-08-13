@@ -1,0 +1,39 @@
+@import "../../../../scss/variables";
+
+.sidebar {
+  background-color: var(--sidebar-color);
+  width: $sidebarWidth;
+  // position: fixed;
+  // right: 0;
+  // bottom: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  // border-bottom: 1px solid #e1e5ea;
+}
+
+.sidebar li:last-child {
+  // border-bottom: none;
+}
+
+.sidebar a {
+  // color: var(--text-light);
+  // display: block;
+  // font-size: 12px;
+  // font-weight: 500;
+  // padding: 12px 25px;
+  // text-decoration: none;
+}
+
+.sidebar a:hover,
+.sidebar a:focus {
+  // background-color: var(--bg-light);
+  // color: var(--text-dark);
+  // border-right: 2px solid #000;
+}

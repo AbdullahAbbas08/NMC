@@ -1,0 +1,214 @@
+<!-- <div class="container">
+  <div class="row content">مرفقات</div>
+  <div class="row next">
+    <div class="d-none d-lg-block" style="width: 100%">
+      <div class="next-content d-flex justify-content-between">
+        <button class="btn mx-5" (click)="navigate()">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span> التالى </span>
+        </button>
+
+        <button class="btn mx-5 back" (click)="Back()">
+          <span> السابق </span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="d-flex justify-content-between d-lg-none d-md-block small-screen"
+      style="width: 100%"
+    >
+      <div class="next-content d-flex justify-content-between px-5 py-2">
+        <div class="next-back-btn-small next-small" (click)="navigate()">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span> إرسال </span>
+        </div>
+
+        <div class="next-back-btn-small back" (click)="Back()">
+          <span> السابق </span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <div class="contain">
+      <div class="row content d-flex align-items-center form-body">
+        <div class="row my-5 d-flex flex-row-reverse">
+          <div class="main d-flex align-items-center justify-content-around">
+
+            <!-- passport -->
+            <div class="child" (click)="Passport.click()">
+              <div class="image-wrapper">
+
+                <img
+                  [src]="
+                    selectedImagePassport ||
+                    '../../../../../assets/images/Passport.png'
+                  "
+                  
+                />
+                <!-- <div class="overlay" (click)="previewImage(selectedImagePassport,'passport',$event)" *ngIf="selectedImagePassport">
+                  <i class="eye-icon fas fa-eye"></i>
+                </div> -->
+              </div>
+              <input
+                formControlName="passport"
+                hidden
+                type="file"
+                #Passport
+                (change)="uploadFile($event, 1)"
+                accept=".jpg, .jpeg, .png"
+              />
+              <h6 class="py-3 font-family text-center">{{ passport }}</h6>
+            </div>
+
+            <!-- accomodation -->
+            <div class="child" (click)="Accommodation.click()">
+              <div class="image-wrapper">
+
+                <img
+                  [src]="
+                    selectedImageAccommodation ||
+                    '../../../../../assets/images/ID.png'
+                  "
+                   
+                />
+                <!-- <div class="overlay" (click)="previewImage(selectedImageAccommodation,'accomodation',$event)" *ngIf="selectedImageAccommodation">
+                  <i class="eye-icon fas fa-eye"></i>
+                </div> -->
+              </div>
+
+              <input
+                formControlName="accomodation"
+                hidden
+                type="file"
+                #Accommodation
+                (change)="uploadFile($event, 2)"
+                accept=".jpg, .jpeg, .png"
+              />
+              <h6 class="py-3 font-family text-center">{{ accomodation }}</h6>
+            </div>
+
+            <!-- personal -->
+            <div class="child" (click)="Personal.click()">
+              <div class="image-wrapper">
+
+                <img
+                  [src]="
+                    selectedImagePersonal ||
+                    '../../../../../assets/images/Pic.png'
+                  "
+                   accept=".jpg, .jpeg, .png"
+                />
+                <!-- <div class="overlay" (click)="previewImage(selectedImagePersonal,'personal',$event)" *ngIf="selectedImagePersonal">
+                  <i class="eye-icon fas fa-eye"></i>
+                </div> -->
+              </div>
+
+              <input
+                formControlName="personal"
+                hidden
+                type="file"
+                #Personal
+                (change)="uploadFile($event, 0)"
+                accept=".jpg, .jpeg, .png"
+              />
+              <h6 class="py-3 font-family text-center">{{ personal }}</h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row next">
+        <div class="d-none d-lg-block" style="width: 100%">
+          <div class="next-content d-flex justify-content-between">
+            <button type="submit" class="btn mx-5" [disabled]="form.invalid && responseCheck">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> التالى </span>
+            </button>
+
+            <button type="button" class="btn mx-5 back" (click)="Back()">
+              <span> السابق </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="d-flex justify-content-between d-lg-none d-md-block small-screen"
+          style="width: 100%"
+        >
+          <div class="next-content d-flex justify-content-between px-5 py-2">
+            <div class="next-back-btn-small next-small" (click)="submit()" >
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> التالى </span>
+            </div>
+
+            <div class="next-back-btn-small back" (click)="Back()">
+              <span> السابق </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row next form-footer px-5">
+        <div class="">
+          <button
+            type="submit"
+            class="btn mx-2 btn-primary"
+            [disabled]="
+              form.invalid &&
+              !(
+                selectedImagePersonal &&
+                selectedImagePassport &&
+                selectedImageAccommodation
+              )
+            "
+          >
+            <i class="fa-solid fa-arrow-left"></i>
+            <span> {{ "send" | translate }} </span>
+          </button>
+          <button
+            type="button"
+            class="btn mx-2 btn-success"
+            [disabled]="
+              form.invalid &&
+              !(
+                selectedImagePersonal &&
+                selectedImagePassport &&
+                selectedImageAccommodation
+              )
+            "
+            (click)="Save()"
+          >
+            <span> {{ "save" | translate }} </span>
+            <i class="fa-solid fa-floppy-disk px-2"></i>
+          </button>
+        </div>
+        <button type="button" class="btn mx-5 back" (click)="Back()">
+          <span> {{ "back" | translate }} </span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div> -->
+    </div>
+  </form>
+</div>
+
+<p-dialog [(visible)]="displaySelectedImage" [style]="{ width: '60vw' }">
+  <div class="row dialog">
+    <div class="col-12 d-flex justify-content-center">
+      <div class="">
+        <h6 class="pb-2" style="text-align: center">
+          {{ selectedName| translate }}
+        </h6>
+        <img  *ngIf="selectedImage" [src]="selectedImage" alt="selected image" width="500" height="500" />
+
+      </div>
+    </div>
+  </div>
+</p-dialog>

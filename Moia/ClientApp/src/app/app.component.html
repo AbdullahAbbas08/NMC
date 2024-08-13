@@ -1,0 +1,183 @@
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+<p-toast
+  [position]="translate.currentLang === 'ar' ? 'top-right' : 'top-left'"
+></p-toast>
+
+
+<!-- delete -->
+<p-confirmDialog
+  #cd
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'حذف' | translate"
+  appendTo="body"
+  key="deleteConfirm"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v4 py-2 px-4" (click)="cd.accept()">
+      {{ "confirm" | translate }}
+    </button>
+    <button type="button" class="btn-v2 py-2 px-4" (click)="cd.reject()">
+      {{ "cancel" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- delete card from tawakkalna-->
+<p-confirmDialog
+  #cd4
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'حذف' | translate"
+  appendTo="body"
+  key="deleteConfirm_card_integration"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v4 py-2 px-4" (click)="cd4.accept()">
+      {{ "confirmDeleteCard" | translate }}
+    </button>
+    <button type="button" class="btn-v2 py-2 px-4" (click)="cd4.reject()">
+      {{ "cancel" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+<!-- confirm -->
+<p-confirmDialog
+  #cd2
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'تأكيد إعتماد الطلب'"
+  appendTo="body"
+  key="SendConfirm"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v3 py-2 px-4" (click)="cd2.accept()">
+      {{ "confirm" | translate }}
+    </button>
+    <button type="button" class="btn-v2 py-2 px-4" (click)="cd2.reject()">
+      {{ "cancel" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- confirm -->
+<p-confirmDialog
+  #cd8
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'تأكيد  عملية الطباعة'"
+  appendTo="body"
+  key="ConfirmPrintOperation"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v3 py-2 px-4" (click)="cd8.accept()">
+      {{ "confirm" | translate }}
+    </button>
+    <button type="button" class="btn-v2 py-2 px-4" (click)="cd8.reject()">
+      {{ "cancel" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- confirm Responsibility -->
+<p-confirmDialog
+  #cd7
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'التأكيد على الإقرار'"
+  appendTo="body"
+  key="confirmResponsibility"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v3 py-2 px-4" (click)="cd7.accept()">
+      {{ "confirm" | translate }}
+    </button>
+    <button type="button" class="btn-v2 py-2 px-4" (click)="cd7.reject()">
+      {{ "cancel" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- confirm move orders -->
+<p-confirmDialog
+  #cd3
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'ترحيل الطلبات'"
+  appendTo="body"
+  key="MoveOrdersConfirm"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v3 py-2 px-4" (click)="cd3.accept()">
+      {{ "ok" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- confirm  add card -->
+<p-confirmDialog
+  #cd5
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'إضافة البطاقة على تطبيق توكلنا'"
+  appendTo="body"
+  key="addCardIntoTawaklana"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v3 py-2 px-4" (click)="cd5.accept()">
+      {{ "ok" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<!-- confirm  add card -->
+<p-confirmDialog
+  #cd6
+  [style]="{ width: '30vw' }"
+  [breakpoints]="{ '960px': '60vw', '640px': '90vw' }"
+  [dismissableMask]="true"
+  [header]="'حفظ بيانات البطاقة على تطبيق توكلنا'"
+  appendTo="body"
+  key="updateCardIntoTawaklana"
+  [closable]="false"
+>
+  <ng-template pTemplate="footer">
+    <button type="button" class="btn-v3 py-2 px-4" (click)="cd6.accept()">
+      {{ "ok" | translate }}
+    </button>
+  </ng-template>
+</p-confirmDialog>
+
+
+

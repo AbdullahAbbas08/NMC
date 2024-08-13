@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moia", "Moia\Moia.csproj", "{3FDA8E65-13EF-4A65-81BD-75C9EF23159B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moia.BL", "Moia.BL\Moia.BL.csproj", "{8C772FE8-FF5F-4338-9384-C737B58E9B08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moia.DAL", "Moia.DAL\Moia.DAL.csproj", "{F5DC8C36-42AB-48DB-9306-D0B8D73BF6F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moia.Shared", "Moia.Shared\Moia.Shared.csproj", "{69161418-4E27-4DC2-AF90-C3AC5C2108AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RDLCDesignCard", "RDLCDesignCard\RDLCDesignCard.csproj", "{35A447E2-C8B7-4BF4-858D-8FBF7325E247}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailIntegration", "EmailIntegration\EmailIntegration.csproj", "{391422A0-2194-4CF4-B07E-266BAAEA992F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmsIntegration", "SmsIntegration\SmsIntegration.csproj", "{FD913E17-3C59-4462-8294-B8EE5337D954}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FDA8E65-13EF-4A65-81BD-75C9EF23159B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDA8E65-13EF-4A65-81BD-75C9EF23159B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDA8E65-13EF-4A65-81BD-75C9EF23159B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDA8E65-13EF-4A65-81BD-75C9EF23159B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C772FE8-FF5F-4338-9384-C737B58E9B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C772FE8-FF5F-4338-9384-C737B58E9B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C772FE8-FF5F-4338-9384-C737B58E9B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C772FE8-FF5F-4338-9384-C737B58E9B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DC8C36-42AB-48DB-9306-D0B8D73BF6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DC8C36-42AB-48DB-9306-D0B8D73BF6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DC8C36-42AB-48DB-9306-D0B8D73BF6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DC8C36-42AB-48DB-9306-D0B8D73BF6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69161418-4E27-4DC2-AF90-C3AC5C2108AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69161418-4E27-4DC2-AF90-C3AC5C2108AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69161418-4E27-4DC2-AF90-C3AC5C2108AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69161418-4E27-4DC2-AF90-C3AC5C2108AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A447E2-C8B7-4BF4-858D-8FBF7325E247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A447E2-C8B7-4BF4-858D-8FBF7325E247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A447E2-C8B7-4BF4-858D-8FBF7325E247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A447E2-C8B7-4BF4-858D-8FBF7325E247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391422A0-2194-4CF4-B07E-266BAAEA992F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391422A0-2194-4CF4-B07E-266BAAEA992F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391422A0-2194-4CF4-B07E-266BAAEA992F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391422A0-2194-4CF4-B07E-266BAAEA992F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD913E17-3C59-4462-8294-B8EE5337D954}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD913E17-3C59-4462-8294-B8EE5337D954}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD913E17-3C59-4462-8294-B8EE5337D954}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD913E17-3C59-4462-8294-B8EE5337D954}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F10E2E58-EF86-4D04-B5B0-AD924D4A38A2}
+	EndGlobalSection
+EndGlobal

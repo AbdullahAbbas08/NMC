@@ -1,0 +1,73 @@
+.text-center {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  font-family: "Almarai-Bold" !important;
+
+  span {
+    text-align: end;
+    font-family: "Almarai-Regular" !important;
+  }
+}
+
+.paginate {
+  // position:absolute;
+  // bottom: 0;
+  // left: 0;
+  width: 100%;
+  margin-top: 20px !important;
+}
+.custom-skeleton {
+  width: 100%;
+  display: flex;
+  overflow-y: auto;
+  // background-color: red;
+  justify-content: center;
+  margin-top: 50px;
+  .skeleton-items {
+    width: 80%;
+  }
+}
+
+.plus-icon {
+  font-size: 25px;
+  color: #64995f;
+}
+
+.field {
+  padding: 0 !important;
+}
+
+.icon{
+  font-size: 22px;
+}
+
+
+
+.checkbox-style{
+  width:20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
+.form-body{
+  .form-group{
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px;
+    background-color: #fff;
+
+  }
+ 
+
+  .confirmation{
+      margin-bottom: 0;
+      margin-right: 5px;
+      font-size: 17px; 
+      color: #b80606; 
+      margin: 0;
+  }
+}

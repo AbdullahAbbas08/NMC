@@ -1,0 +1,1175 @@
+<div class="Titles d-flex justify-content-center align-items-center">
+  <h3>{{ "userList" | translate }}</h3>
+</div>
+<div class="main bg-white" style="overflow-y: auto">
+  <div class="row pt-2 mx-0" style="overflow-y: auto">
+    <!-- table -->
+    <div class="col-12">
+      <div>
+        <p-table
+          [value]="entities ? entities : []"
+          [resizableColumns]="true"
+          styleClass="p-datatable-gridlines"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="caption">
+            <div class="row d-flex flex-row-reverse">
+              <div class="col-12 col-md-6 d-flex align-items-center">
+                <input
+                  pInputText
+                  class="form-control py-3 dir-input"
+                  type="text"
+                  placeholder="{{ 'Search' | translate }}"
+                  [formControl]="searchTermControl"
+                />
+              </div>
+              <div class="col-12 col-md-3 d-flex align-items-center">
+                <!-- *appHasPermission="['SuperAdmin']" -->
+                <!-- <div >
+                  <span class="px-2" *ngIf="Active; else disable">
+                    <i
+                      class="fa-solid fa-lock-open state active"
+                      pTooltip="{{ 'Allactive' | translate }}"
+                      placeholder="Top"
+                      (click)="Active = false; filterFn()"
+                    ></i>
+                  </span>
+                  <ng-template #disable>
+                    <i
+                      class="fa-solid fa-lock state non-active"
+                      pTooltip="{{ 'Allblock' | translate }}"
+                      placeholder="Top"
+                      (click)="Active = true; filterFn()"
+                    ></i>
+                  </ng-template>
+                </div> -->
+
+                <!-- <div class="form-group"> -->
+                  <!-- <div class="field col-12 md:col-4"> -->
+                    <!-- <span class="p-float-label"> -->
+                    <p-dropdown
+                      [options]="StatusList"
+                      [(ngModel)]="Filter.active"
+                      (filter)="(true)"
+                      optionValue="value"
+                      optionLabel="type"
+                      appendTo="body"
+                      [autoDisplayFirst]="false"
+                      (onChange)="filterFn()"
+                    ></p-dropdown>
+                    <!-- <label for="inputtext">{{ "chooseCommittee" | translate }}
+                      </label> -->
+                    <!-- </span> -->
+                  <!-- </div> -->
+                <!-- </div> -->
+              </div>
+              <div class="col-12 col-md-3 d-none d-lg-block">
+                <div class="d-flex align-items-start">
+                  <button class="btn-v3 py-2 px-4" (click)="addnew()">
+                    {{ "add" | translate }}
+                  </button>
+                  <button class="btn-v4 mx-1 py-2 px-4" (click)="reset()">
+                    {{ "reset" | translate }}
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-md-3 p-0 d-md-block d-lg-none">
+                <div
+                  class="d-flex align-items-center justify-content-center h-100"
+                >
+                  <span>
+                    <i
+                      class="fa-solid fa-circle-plus plus-icon"
+                      (click)="addnew()"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+            
+              <div
+              class="col-12 col-md-4 basic pt-4"
+              *appHasPermission="['SuperAdmin']"
+            >
+              <div class="form-group">
+                <div class="field col-12 md:col-4">
+                  <span class="p-float-label">
+                    <p-dropdown
+                      [options]="CommitteeList"
+                      [(ngModel)]="Filter.com"
+                      (filter)="(true)"
+                      [showClear]="true"
+                      [filter]="true"
+                      filterBy="title"
+                      optionLabel="title"
+                      optionValue="id"
+                      appendTo="body"
+                      [autoDisplayFirst]="false"
+                      (onChange)="filterFn()"
+                    ></p-dropdown>
+                    <label for="inputtext"
+                      >{{ "chooseCommittee" | translate }}
+                    </label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+
+              <!-- search with branch -->
+              <div
+                class="col-12 col-md-4 basic pt-4"
+                *appHasPermission="['SuperAdmin']"
+              >
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <p-dropdown
+                        [options]="BranchList"
+                        [(ngModel)]="Filter.brn"
+                        (filter)="(true)"
+                        [showClear]="true"
+                        [filter]="true"
+                        filterBy="title"
+                        optionLabel="title"
+                        optionValue="id"
+                        appendTo="body"
+                        [autoDisplayFirst]="false"
+                        (onChange)="filterFn()"
+                      ></p-dropdown>
+                      <label for="inputtext">{{ "branch" | translate }} </label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+  <!-- search with committee -->
+
+
+
+              <div
+                class="col-12 col-md-4 basic pt-4"
+                *appHasPermission="['SuperAdmin']"
+              >
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <p-dropdown
+                        [options]="AllRoles"
+                        [(ngModel)]="Filter.role"
+                        (filter)="(true)"
+                        [showClear]="true"
+                        [filter]="true"
+                        filterBy="title"
+                        optionLabel="nameAr"
+                        optionValue="id"
+                        appendTo="body"
+                        [autoDisplayFirst]="false"
+                        (onChange)="filterFn()"
+                      ></p-dropdown>
+                      <label for="inputtext"
+                        >{{ "chooserole" | translate }}
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr style="font-family: 'Almarai-Regular' !important">
+              <th style="width: 15%">
+                <div class="d-flex justify-content-center">
+                  {{ "settings" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "email" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "mobile" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "identity" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "RoleTitle" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "username" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "name" | translate }}
+                </div>
+              </th>
+
+              <th style="width: 5%">
+                <div class="d-flex justify-content-center">
+                  {{ "index" | translate }}
+                </div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-entity let-rowIndex="rowIndex">
+            <tr style="font-family: 'Almarai-Regular' !important">
+              <!-- carType -->
+
+              <td>
+                <div class="d-flex justify-content-center">
+                  <div>
+                    <span
+                      class="px-2"
+                      *ngIf="entityType(entity).enable; else disable"
+                    >
+                      <i
+                        class="fa-solid fa-lock-open state active"
+                        pTooltip="{{ 'active' | translate }}"
+                        placeholder="Top"
+                        (click)="ChangeState(entityType(entity).id, false)"
+                      ></i>
+                    </span>
+                    <ng-template #disable>
+                      <i
+                        class="fa-solid fa-lock state non-active"
+                        pTooltip="{{ 'block' | translate }}"
+                        placeholder="Top"
+                        (click)="ChangeState(entityType(entity).id, true)"
+                      ></i>
+                    </ng-template>
+                  </div>
+                  <i
+                    class="fa-solid fa-pen-to-square mr-3 cursor-pointer font-primary px-3 state"
+                    (click)="Edit(entityType(entity).id)"
+                  ></i>
+
+                  <!-- <i
+                      class="fa-solid fa-trash cursor-pointer font-danger"
+                      (click)="delete(entityType(entity).id)"
+                    ></i> -->
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).email }}
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).mobile }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).identity }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).roleTitle }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).userName }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).name }}
+                </div>
+              </td>
+              <td style="width: 5%">
+                <div class="d-flex justify-content-center">
+                  {{ rowIndex + 1 }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template #skeletonblock class="row col-12 bg-info">
+            <div class="custom-skeleton">
+              <div class="skeleton-items">
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+              </div>
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center my-5" *ngIf="count == 0">
+      <div class="alert alert-danger">
+        <h3>{{ "NoDataFound" | translate }}</h3>
+      </div>
+    </div>
+  </div>
+  <!-- pagination -->
+  <div class="row p-0 m-0 mb-1 paginate" *ngIf="count != 0">
+    <div class="col-12">
+      <p-paginator
+        [rows]="pageSize"
+        [totalRecords]="count"
+        [rowsPerPageOptions]="pageSizeOptions"
+        (onPageChange)="getData($event)"
+        [dropdownAppendTo]="'body'"
+      ></p-paginator>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4>{{ "addnewuser" | translate }}</h4>
+    </div>
+  </ng-template>
+
+  <p-accordion>
+    <!-- add user External -->
+    <p-accordionTab header="{{ 'addexternaluser' | translate }}">
+      <div class="row dialog">
+        <div class="col-12 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-12 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="2"
+                  maxlength="60"
+                  [(ngModel)]="model.name"
+                />
+                <label for="inputtext"> {{ "name" | translate }}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="5"
+                  maxlength="50"
+                  [(ngModel)]="model.email"
+                />
+                <label for="inputtext"> {{ "email" | translate }} </label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="6"
+                  maxlength="12"
+                  [(ngModel)]="model.mobile"
+                />
+                <label for="inputtext"> {{ "mobile" | translate }}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <div class="field col-12 mx-0 px-0">
+                  <span class="p-float-label">
+                    <p-password
+                      [(ngModel)]="model.passwordHash"
+                      (keypress)="validateEnglish_No_special_Chars($event)"
+                      placeholder=" {{ 'password' | translate }} "
+                      minlength="8"
+                      maxlength="15"
+                      tabindex="6"
+                      [disabled]="passwordDisable"
+                      [toggleMask]="true"
+                    ></p-password>
+                  </span>
+                </div>
+                <label for="inputtext"></label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="6"
+                  maxlength="12"
+                  [(ngModel)]="model.identity"
+                />
+                <label for="inputtext"> {{ "identity" | translate }}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic py-2">
+          <div class="form-group">
+            <div class="field col-12 md:col-6">
+              <span class="p-float-label">
+                <p-dropdown
+                  [options]="BranchCommitteeList"
+                  [(ngModel)]="model.committeeId"
+                  (filter)="(true)"
+                  [showClear]="true"
+                  [filter]="true"
+                  filterBy="title"
+                  optionLabel="title"
+                  optionValue="id"
+                  appendTo="body"
+                  [autoDisplayFirst]="false"
+                  (onChange)="filterFn()"
+                ></p-dropdown>
+                <label for="inputtext"
+                  >{{ "chooseCommittee" | translate }}
+                </label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-12 col-md-6 basic py-2">
+          <div class="field col-12 md:col-6 px-0">
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="BranchList"
+                [filter]="true"
+                (onChange)="getCommitteesByBranch()"
+                optionLabel="title"
+                appendTo="body"
+                [(ngModel)]="model.branch"
+                [autoDisplayFirst]="false"
+              ></p-dropdown>
+              <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+            </span>
+          </div>
+        </div> -->
+
+        <div class="col-12 col-md-6 basic py-2">
+          <div
+            class="field col-12 md:col-md-6 px-0"
+            *ngIf="User?.Role?.Name == 'SuperAdmin'; else BranchDataEntryblock"
+          >
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="BranchList"
+                [filter]="true"
+                optionLabel="title"
+                appendTo="body"
+                (onChange)="getCommitteesByBranch()"
+                [(ngModel)]="model.branch"
+                [autoDisplayFirst]="false"
+              ></p-dropdown>
+              <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+            </span>
+          </div>
+          <ng-template #BranchDataEntryblock>
+            <span class="p-float-label">
+              <input
+                type="text"
+                class="form-control"
+                pInputText
+                disabled
+                [(ngModel)]="User.Branch.Title"
+                readonly
+              />
+              <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+            </span>
+          </ng-template>
+        </div>
+
+        <div class="col-12 basic py-2">
+          <div class="field col-12 md:col-md-12 px-0">
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="CommitteeRoles"
+                optionLabel="nameAr"
+                appendTo="body"
+                (onChange)="setRole()"
+                [(ngModel)]="model.role"
+                [autoDisplayFirst]="false"
+              ></p-dropdown>
+              <label for="inputtext"> {{ "chooserole" | translate }} </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <div>
+            <div class="btn btn-danger px-3 py-1 mx-1" (click)="CancelDialog()">
+              {{ "cancel" | translate }}
+            </div>
+            <div
+              class="btn btn-info px-3 py-1 mx-1"
+              (click)="AddExternalUser()"
+            >
+              {{ "save" | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+
+    <!-- Add User using Active Directory -->
+    <p-accordionTab header="{{ 'addactiveDirectoryUser' | translate }}">
+      <div class="row dialog">
+        <div class="col-12 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-12 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="2"
+                  maxlength="60"
+                  [(ngModel)]="model.name"
+                />
+                <label for="inputtext">{{ "name" | translate }}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="5"
+                  maxlength="50"
+                  [(ngModel)]="model.email"
+                />
+                <label for="inputtext"> {{ "email" | translate }} </label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  [(ngModel)]="model.mobile"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="6"
+                  maxlength="12"
+                />
+                <label for="inputtext"> {{ "mobile" | translate }}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  pInputText
+                  type="text"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="3"
+                  maxlength="15"
+                  [(ngModel)]="model.identity"
+                />
+                <label for="inputtext"> {{ "identity" | translate }} </label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 basic">
+          <div class="form-group">
+            <div class="field col-12 md:col-6 px-0">
+              <span class="p-float-label">
+                <input
+                  type="text"
+                  class="form-control"
+                  pInputText
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="2"
+                  maxlength="20"
+                  autocomplete="off"
+                  tabindex="5"
+                  [(ngModel)]="model.userName"
+                  readonly
+                  onfocus="this.removeAttribute('readonly');"
+                  onblur="this.setAttribute('readonly', 'readonly');"
+                />
+                <label for="inputtext"> {{ "username" | translate }}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- *appHasPermission="['SuperAdmin']" -->
+        <div class="col-12 col-md-6 basic py-2">
+          <div class="field col-12 md:col-md-6 px-0">
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="roles"
+                optionLabel="nameAr"
+                appendTo="body"
+                [showClear]="true"
+                (onChange)="setRole()"
+                [(ngModel)]="model.role"
+                [autoDisplayFirst]="false"
+              ></p-dropdown>
+              <label for="inputtext"> {{ "chooserole" | translate }} </label>
+            </span>
+          </div>
+        </div>
+
+        <!-- *appHasPermission="['SuperAdmin']" -->
+        <!-- <div class="col-12 col-md-6 basic py-2">
+          <div class="field col-12 md:col-md-6 px-0">
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="BranchList"
+                [filter]="true"
+                optionLabel="title"
+                appendTo="body"
+                [(ngModel)]="model.branch"
+                [autoDisplayFirst]="false"
+              ></p-dropdown>
+              <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+            </span>
+          </div>
+        </div> -->
+
+        <div class="col-12 col-md-6 basic py-2">
+          <div
+            class="field col-12 md:col-md-6 px-0"
+            *ngIf="User?.Role?.Name == 'SuperAdmin'; else BranchDataEntryblock"
+          >
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="BranchList"
+                [filter]="true"
+                optionLabel="title"
+                appendTo="body"
+                [(ngModel)]="model.branch"
+                [autoDisplayFirst]="false"
+              ></p-dropdown>
+              <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+            </span>
+          </div>
+          <ng-template #BranchDataEntryblock>
+            <span class="p-float-label">
+              <input
+                type="text"
+                class="form-control"
+                pInputText
+                disabled
+                [(ngModel)]="User.Branch.Title"
+                readonly
+              />
+              <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+            </span>
+          </ng-template>
+        </div>
+
+        <div
+          *ngIf="model.role?.name == 'BranchManager'"
+          class="col-12 d-flex justify-content-center basic py-2"
+        >
+          <div>
+            <div class="quick-info d-flex align-items-center">
+              <div class="user-image">
+                <img
+                  [src]="
+                    logo ? logo : '../../../../assets/images/backgroundlogo.jpg'
+                  "
+                  class="img-fluid"
+                />
+                <span class="custom-upload-input">
+                  {{ "ChangePic" | translate }}
+                  <input
+                    #imageFilelogo
+                    (change)="onSelect($event)"
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.gif"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <div>
+            <div class="btn btn-danger px-3 py-1 mx-1" (click)="CancelDialog()">
+              {{ "cancel" | translate }}
+            </div>
+            <button
+              type="button"
+              class="btn btn-info px-3 py-1 mx-1"
+              (click)="AddInternalUser()"
+              [disabled]="!checkDataIsValid()"
+            >
+              {{ "save" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+</p-dialog>
+
+<!-- ***********************************display ********************************************************** -->
+
+<!-- ExternalUserdisplay -->
+<p-dialog
+  [(visible)]="ExternalUserdisplay"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4>{{ "editexternaluserdata" | translate }}</h4>
+    </div>
+  </ng-template>
+  <div class="row dialog">
+    <div class="col-12 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-12 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="2"
+              maxlength="60"
+              [(ngModel)]="model.name"
+            />
+            <label for="inputtext"> {{ "name" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="5"
+              maxlength="50"
+              [(ngModel)]="model.email"
+            />
+            <label for="inputtext"> {{ "email" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="6"
+              maxlength="12"
+              [(ngModel)]="model.mobile"
+            />
+            <label for="inputtext"> {{ "mobile" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <div class="field col-12 mx-0 px-0">
+              <span class="p-float-label">
+                <p-password
+                  [(ngModel)]="model.passwordHash"
+                  placeholder="أدخل كلمة المرور"
+                  minlength="6"
+                  maxlength="100"
+                  tabindex="6"
+                  [disabled]="passwordDisable"
+                  [toggleMask]="true"
+                ></p-password>
+              </span>
+            </div>
+            <label for="inputtext"></label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="6"
+              maxlength="12"
+              [(ngModel)]="model.identity"
+            />
+            <label for="inputtext"> {{ "identity" | translate }} </label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic py-2">
+      <div class="form-group">
+        <div class="field col-12 md:col-6">
+          <span class="p-float-label">
+            <p-dropdown
+              [options]="BranchCommitteeList"
+              [(ngModel)]="model.committeeId"
+              (filter)="(true)"
+              [showClear]="true"
+              [filter]="true"
+              filterBy="title"
+              optionLabel="title"
+              optionValue="id"
+              appendTo="body"
+              [autoDisplayFirst]="false"
+              (onChange)="filterFn()"
+            ></p-dropdown>
+            <label for="inputtext">{{ "chooseCommittee" | translate }} </label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col-12 col-md-6 basic py-2">
+      <div class="field col-12 md:col-6 px-0">
+        <span class="p-float-label">
+          <p-dropdown
+            [options]="BranchList"
+            [filter]="true"
+            (onChange)="getCommitteesByBranch()"
+            optionLabel="title"
+            appendTo="body"
+            [(ngModel)]="model.branch"
+            [autoDisplayFirst]="false"
+          ></p-dropdown>
+          <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+        </span>
+      </div>
+    </div> -->
+
+    <div class="col-12 col-md-6 basic py-2">
+      <div
+        class="field col-12 md:col-md-6 px-0"
+        *ngIf="User?.Role?.Name == 'SuperAdmin'; else BranchDataEntryblock"
+      >
+        <span class="p-float-label">
+          <p-dropdown
+            [options]="BranchList"
+            [filter]="true"
+            optionLabel="title"
+            appendTo="body"
+            (onChange)="getCommitteesByBranch()"
+            [(ngModel)]="model.branch"
+            [autoDisplayFirst]="false"
+          ></p-dropdown>
+          <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+        </span>
+      </div>
+      <ng-template #BranchDataEntryblock>
+        <span class="p-float-label">
+          <input
+            type="text"
+            class="form-control"
+            pInputText
+            disabled
+            [(ngModel)]="User.Branch.Title"
+            readonly
+          />
+          <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+        </span>
+      </ng-template>
+    </div>
+
+    <div class="col-12 basic py-2">
+      <div class="field col-12 md:col-md-12 px-0">
+        <span class="p-float-label">
+          <p-dropdown
+            [options]="CommitteeRoles"
+            optionLabel="nameAr"
+            appendTo="body"
+            (onChange)="setRole()"
+            [(ngModel)]="model.role"
+            [autoDisplayFirst]="false"
+          ></p-dropdown>
+          <label for="inputtext"> {{ "chooserole" | translate }} </label>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <div>
+        <div
+          class="btn btn-danger px-3 py-1 mx-1"
+          (click)="ExternalUserdisplay = false"
+        >
+          {{ "cancel" | translate }}
+        </div>
+        <div class="btn btn-info px-3 py-1 mx-1" (click)="AddExternalUser()">
+          {{ "save" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<!-- internalUserdisplay -->
+<p-dialog
+  [(visible)]="internalUserdisplay"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4>{{ "edituserdata" | translate }}</h4>
+    </div>
+  </ng-template>
+  <div class="row dialog">
+    <div class="col-12 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-12 px-0">
+          <span class="p-float-label">
+            <input pInputText type="text" [(ngModel)]="model.name" />
+            <label for="inputtext"> {{ "name" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="5"
+              maxlength="50"
+              [(ngModel)]="model.email"
+            />
+            <label for="inputtext"> {{ "email" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="6"
+              maxlength="12"
+              [(ngModel)]="model.mobile"
+            />
+            <label for="inputtext"> {{ "mobile" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              pInputText
+              type="text"
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="6"
+              maxlength="12"
+              [(ngModel)]="model.identity"
+            />
+            <label for="inputtext"> {{ "identity" | translate }} </label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 basic">
+      <div class="form-group">
+        <div class="field col-12 md:col-6 px-0">
+          <span class="p-float-label">
+            <input
+              type="text"
+              class="form-control"
+              pInputText
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="2"
+              maxlength="20"
+              autocomplete="off"
+              tabindex="5"
+              [(ngModel)]="model.userName"
+              readonly
+              onfocus="this.removeAttribute('readonly');"
+              onblur="this.setAttribute('readonly', 'readonly');"
+            />
+            <label for="inputtext"> {{ "username" | translate }}</label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- *appHasPermission="['SuperAdmin']" -->
+    <div class="col-12 col-md-6 basic py-2">
+      <div class="field col-12 md:col-md-6 px-0">
+        <span class="p-float-label">
+          <p-dropdown
+            [options]="roles"
+            optionLabel="nameAr"
+            appendTo="body"
+            (onChange)="setRole()"
+            [showClear]="true"
+            [(ngModel)]="model.role"
+            [autoDisplayFirst]="false"
+          ></p-dropdown>
+          <label for="inputtext"> {{ "chooserole" | translate }} </label>
+        </span>
+      </div>
+    </div>
+
+    <!-- *appHasPermission="['SuperAdmin']" -->
+    <div class="col-12 col-md-6 basic py-2">
+      <div
+        class="field col-12 md:col-md-6 px-0"
+        *ngIf="User?.Role?.Name == 'SuperAdmin'; else BranchDataEntryblock"
+      >
+        <span class="p-float-label">
+          <p-dropdown
+            [options]="BranchList"
+            [filter]="true"
+            optionLabel="title"
+            appendTo="body"
+            [(ngModel)]="model.branch"
+            [autoDisplayFirst]="false"
+          ></p-dropdown>
+          <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+        </span>
+      </div>
+      <ng-template #BranchDataEntryblock>
+        <span class="p-float-label">
+          <input
+            type="text"
+            class="form-control"
+            pInputText
+            disabled
+            [(ngModel)]="User.Branch.Title"
+            readonly
+          />
+          <label for="inputtext"> {{ "chooseregion" | translate }}</label>
+        </span>
+      </ng-template>
+    </div>
+
+    <div
+      *ngIf="model.role?.name == 'BranchManager'"
+      class="col-12 d-flex justify-content-center basic py-2"
+    >
+      <div>
+        <div class="quick-info d-flex align-items-center">
+          <div class="user-image">
+            <img
+              [src]="
+                logo ? logo : '../../../../assets/images/backgroundlogo.jpg'
+              "
+              class="img-fluid"
+            />
+            <span class="custom-upload-input">
+              {{ "ChangePic" | translate }}
+              <input
+                #imageFilelogo
+                (change)="onSelect($event)"
+                type="file"
+                accept=".jpg,.jpeg,.png,.gif"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <div>
+        <div
+          class="btn btn-danger px-3 py-1 mx-1"
+          (click)="internalUserdisplay = false"
+        >
+          {{ "cancel" | translate }}
+        </div>
+        <div class="btn btn-info px-3 py-1 mx-1" (click)="AddInternalUser()">
+          {{ "save" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>

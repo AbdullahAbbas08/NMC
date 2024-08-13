@@ -1,0 +1,626 @@
+<div class="Titles d-flex justify-content-center align-items-center">
+  <h3>{{ "orderdetails" | translate }}</h3>
+</div>
+<div class="main bg-white px-4" style="overflow-y: auto">
+  <div class="d-flex justify-content-start py-4 px-4">
+    <button class="btn btn-primary mx-2 px-5" (click)="Back()">
+      <span> {{ "back" | translate }} </span>
+    </button>
+
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="w-100 h-100" style="overflow-y: auto">
+      <p-accordion>
+        <!-- [selected]="true" -->
+        <p-accordionTab  [selected]="true" header="{{ 'MuslimpersonalData' | translate }}">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الاسم قبل الإسلام</h6>
+                <span class="">{{
+                  Muslime?.personalData?.nameBeforeFristAr ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الاسم الأوسط</h6>
+                <span>{{
+                  Muslime?.personalData?.nameBeforeMiddleAr ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">اسم العائلة</h6>
+                <span>{{
+                  Muslime?.personalData?.nameBeforeLastAr ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الاسم بعد الإسلام</h6>
+                <span>{{ Muslime?.personalData?.nameAfter ?? "لا يوجد" }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">(EN) الاسم قبل الإسلام</h6>
+                <span>{{
+                  Muslime?.personalData?.nameBeforeFristEn ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">(EN) الاسم الأوسط</h6>
+                <span>{{
+                  Muslime?.personalData?.nameBeforeMiddleEn ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">(EN) اسم العائلة</h6>
+                <span>{{
+                  Muslime?.personalData?.nameBeforeLastEn ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الاسم بعد الإسلام</h6>
+                <span>{{ Muslime?.personalData?.nameAfter ?? "لا يوجد" }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">(EN) الاسم بعد الإسلام</h6>
+                <span>{{
+                  Muslime?.personalData?.nameAfterEn ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">تاريخ الإسلام ميلادي</h6>
+                <span>{{
+                  Muslime?.personalData?.islamDate
+                    | date : "shortDate" ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <!-- <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">تاريخ الإسلام هجري</h6>
+                <span>{{
+                  Muslime?.personalData?.islamDateHijry
+                    | date : "shortDate" ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div> -->
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الشاهد الأول</h6>
+                <span>{{
+                  Muslime?.personalData?.firstWitness?.name ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الشاهد الثاني</h6>
+                <span>{{
+                  Muslime?.personalData?.secondWitness?.name ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">اسم الداعية</h6>
+                <span>{{
+                  Muslime?.personalData?.preacherName?.title ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="{{ 'personalinfo' | translate }}">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">تاريخ الميلاد</h6>
+                <span>{{
+                  Muslime?.personalInformation?.dateOfBirth
+                    | date : "shortDate" ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">مكان الميلاد</h6>
+                <span>{{
+                  Muslime?.personalInformation?.placeOfBirth ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الجنسية</h6>
+                <span>{{
+                  Muslime?.personalInformation?.nationality?.nameAr ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الجنس</h6>
+
+                <span
+                  *ngIf="
+                    Muslime?.personalInformation?.gender == 1;
+                    else femaleBlock
+                  "
+                  >ذكر</span
+                >
+                <ng-template #femaleBlock>أنثى</ng-template>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">ترتيب المسلم في العائلة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.positionInFamily ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الحالة الاجتماعية</h6>
+                <span>{{
+                  getMaritalStatusString(
+                    Muslime?.personalInformation?.maritalStatus
+                  ) || "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">اسم الزوج/ـة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.husbandName ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">المستوى التعليمي</h6>
+                <span>{{
+                  Muslime?.personalInformation?.educationalLevel?.title ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الديانة السابقة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.previousReligion?.title ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">رقم الإقامة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.residenceNumber ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">تاريخ إصدار الإقامة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.residenceIssueDate
+                    | date : "shortDate" ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">مكان إصدار الإقامة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.residenceIssuePlace?.title ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">رقم الجواز</h6>
+                <span>{{
+                  Muslime?.personalInformation?.passportNumber ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">تاريخ إصدار الجواز</h6>
+                <span>{{
+                  Muslime?.personalInformation?.dateOfPassportIssue
+                    | date : "shortDate" ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">جهة إصدار الجواز</h6>
+                <span>{{
+                  Muslime?.personalInformation?.placeOfPassportIssue ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">تاريخ الدخول للمملكة</h6>
+                <span>{{
+                  Muslime?.personalInformation?.dateOfEntryKingdom
+                    | date : "shortDate" ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="{{ 'originalcountrytitle' | translate }}">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الدولة</h6>
+                <span>{{
+                  Muslime?.contactData?.originalCountry?.country?.nameAr ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">المدينة</h6>
+                <span>{{
+                  Muslime?.contactData?.originalCountry?.city ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الشارع</h6>
+                <span>{{
+                  Muslime?.contactData?.originalCountry?.street ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الولاية/المقاطعة/ المنطقة</h6>
+                <span>{{
+                  Muslime?.contactData?.originalCountry?.region ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">رقم و عنوان المنزل/ الشقة</h6>
+                <span>{{
+                  Muslime?.contactData?.originalCountry?.doorNumber ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="{{ 'currentaddresshome' | translate }} ">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">المدينة</h6>
+                <span>{{
+                  Muslime?.contactData?.currentResidence?.city ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الحي</h6>
+                <span>{{
+                  Muslime?.contactData?.currentResidence?.region ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الشارع</h6>
+                <span>{{
+                  Muslime?.contactData?.currentResidence?.street ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">رقم المنزل/ الشقة</h6>
+                <span>{{
+                  Muslime?.contactData?.currentResidence?.doorNumber ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div style="text-align: end">
+                <h6 class="">رقم للتواصل في الحالات الطارئة</h6>
+                <span>{{
+                  Muslime?.contactData?.currentResidence?.emergencyNumber ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header=" {{ 'contactdata' | translate }}">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">رقم الجوال</h6>
+                <span>{{
+                  Muslime?.contactData?.contactData?.phoneNumber ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">هاتف المنزل</h6>
+                <span>{{
+                  Muslime?.contactData?.contactData?.homeNumber ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">البريد الإلكتروني</h6>
+                <span>{{
+                  Muslime?.contactData?.contactData?.email ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="{{ 'familydata' | translate }}">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">عدد أفراد الأسرة</h6>
+                <span>
+                  {{
+                    Muslime?.familyInformation?.familyInformation
+                      ?.membersNumber ?? "لا يوجد"
+                  }}
+                </span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">عدد الأولاد</h6>
+                <span>{{
+                  Muslime?.familyInformation?.familyInformation?.boysNumber ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">عدد البنات</h6>
+                <span>{{
+                  Muslime?.familyInformation?.familyInformation?.girlsNumber ??
+                    "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="{{ 'work' | translate }}">
+          <div class="row d-flex flex-row-reverse">
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">اسم الشركة</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.companyTitle ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">المهنة</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.profession ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">المدير المباشر/ الكفيل</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.directManager ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">المدينة</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.city ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الشارع</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.street ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">العنوان</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.address ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">صندوق البريد</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.postalBox ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-3 text-center py-2">
+              <div class="contain-item">
+                <h6 class="">الرمز البريدي</h6>
+                <span>{{
+                  Muslime?.familyInformation?.work?.postalCode ?? "لا يوجد"
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </p-accordionTab>
+        <p-accordionTab header="{{ 'islamrecognitionway' | translate }}">
+          <div class="row d-flex flex-row-reverse mx-2">
+            <div class="d-flex flex-row-reverse col-12">
+              <h6>كيف تعرفت على الإسلام ؟</h6>
+            </div>
+            <div
+              class="col-12 col-md-4 d-flex justify-content-end py-2"
+              *ngFor="let item of IslamRecognitionWays"
+            >
+              <label [for]="item.id" class="px-3">{{
+                item.title ?? "لا يوجد"
+              }}</label>
+              <input
+                class="checkbox px-2 mx-2"
+                [checked]="recognitionWayExist(item.id)"
+                type="checkbox"
+                id="{{ item?.id }}"
+                value="{{ item.id }}"
+                disabled
+              />
+              <!-- <p-checkbox
+                [binary]="recognitionWayExist(item.id)"
+                [value]="item"
+                [inputId]="item.id.toString()"
+              ></p-checkbox> -->
+            </div>
+          </div>
+        </p-accordionTab>
+        <div class="pb-5">
+          <p-accordionTab header="{{ 'attachment' | translate }}">
+            <div class="row d-flex flex-row-reverse">
+              <div
+                class="col-12 col-md-4 d-flex justify-content-center text-center py-2"
+              >
+                <div class="">
+                  <h6 class="py-2" style="text-align: center">
+                    {{ "passportfoto" | translate }}
+                  </h6>
+                  <img
+                    [src]="
+                      'data:image/png;base64,' + Muslime?.attachment?._Passport
+                    "
+                    width="250"
+                    height="250"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-12 col-md-4 d-flex justify-content-center text-center py-2"
+              >
+                <div>
+                  <h6 class="py-2" style="text-align: center">
+                    {{ "accomodationfoto" | translate }}
+                  </h6>
+                  <img
+                    [src]="
+                      'data:image/png;base64,' +
+                      Muslime?.attachment?._Accomodation
+                    "
+                    width="250"
+                    height="250"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-12 col-md-4 d-flex justify-content-center text-center py-2"
+              >
+                <div>
+                  <h6 class="py-2" style="text-align: center">
+                    {{ "personalfoto" | translate }}
+                  </h6>
+                  <img
+                    [src]="
+                      'data:image/png;base64,' + Muslime?.attachment?._Personal
+                    "
+                    width="250"
+                    height="250"
+                  />
+                </div>
+              </div>
+            </div>
+          </p-accordionTab>
+        </div>
+      </p-accordion>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4>{{ "refusereason" | translate }}</h4>
+    </div>
+  </ng-template>
+  <div class="row dialog">
+    <div class="col-12">
+      <div class="form-group text-dir">
+        <textarea
+          pInputTextarea
+          placeholder="{{ 'insertrefusereason' | translate }}"
+          class="form-control"
+          [rows]="5"
+          [cols]="30"
+          [(ngModel)]="Notes"
+          pInputTextarea
+          autoResize="autoResize"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-center">
+      <div>
+        <div class="btn btn-danger px-3 py-1 mx-1" (click)="close()">
+          {{ "cancel" | translate }}
+        </div>
+        <button
+          class="btn btn-info px-3 py-1 mx-1"
+          (click)="RefuseOrder()"
+          [disabled]="!(this.Notes && this.Notes.length > 10)"
+        >
+          {{ "send" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</p-dialog>

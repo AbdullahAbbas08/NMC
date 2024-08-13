@@ -1,0 +1,469 @@
+<div class="container">
+  <!-- < class="form"> -->
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="row content d-flex justify-content-center align-items-center mt-2 form"
+  >
+    <div class="contain">
+      <div
+        class="row content d-flex justify-content-center align-items-center mt-2 form-body"
+      >
+        <div class="row personal-data d-flex flex-row-reverse py-4">
+          <label class="header">{{ "personaldata" | translate }}</label>
+          <!-- تاريخ  الميلاد -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-calendar
+                    appendTo="body"
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    [touchUI]="true"
+                    formControlName="dateOfBirth"
+                    [tabindex]="1"
+                  ></p-calendar>
+                  <label class="required" for="inputtext">{{
+                    "dateofbirth" | translate
+                  }}</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('dateOfBirth')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- مكان الميلاد -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="placeOfBirth"
+                    [tabindex]="2"
+                  />
+                  <label class="required" for="inputtext">
+                    {{ "placeofbirth" | translate }}</label
+                  >
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('placeOfBirth')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- الجنسية -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="Countries"
+                    optionLabel="nameAr"
+                    [filter]="true"
+                    filterBy="nameAr"
+                    appendTo="body"
+                    formControlName="nationality"
+                    [autoDisplayFirst]="false"
+                    [tabindex]="3"
+                  ></p-dropdown>
+                  <label class="required" for="inputtext">
+                    {{ "nationality" | translate }}</label
+                  >
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('nationality')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- الجنس -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="Gender"
+                    optionLabel="key"
+                    optionValue="value"
+                    appendTo="body"
+                    formControlName="gender"
+                    [tabindex]="4"
+                    [autoDisplayFirst]="false"
+                  ></p-dropdown>
+                  <label class="required" for="inputtext">{{
+                    "gender" | translate
+                  }}</label>
+                </span>
+              </div>
+              <app-print-error [control]="form.get('gender')"></app-print-error>
+            </div>
+          </div>
+
+          <!-- ترتيب المسلم فى العائلة  -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="number"
+                    placeholder=""
+                    formControlName="positionInFamily"
+                    [tabindex]="5"
+                  />
+                  <label for="inputtext">{{
+                    "arrangemuslime" | translate
+                  }}</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('positionInFamily')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- الحالة الإجتماعية -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="MaritalStatus"
+                    optionLabel="key"
+                    optionValue="value"
+                    appendTo="body"
+                    formControlName="maritalStatus"
+                    [tabindex]="6"
+                    [autoDisplayFirst]="false"
+                  ></p-dropdown>
+                  <label for="inputtext"
+                    >{{ "maritalstatus" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('maritalStatus')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!--  أسم الزوج -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    placeholder=""
+                    formControlName="husbandName"
+                    [tabindex]="7"
+                  />
+                  <label for="inputtext">
+                    {{ "hasbandname" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('husbandName')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- المستوى التعليمى  -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="EducationalClassify"
+                    appendTo="body"
+                    optionLabel="title"
+                    formControlName="educationalLevel"
+                    [tabindex]="8"
+                    [autoDisplayFirst]="false"
+                  ></p-dropdown>
+                  <label class="required" for="inputtext">{{
+                    "educationallevel" | translate
+                  }}</label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('educationalLevel')"
+              ></app-print-error>
+            </div>
+          </div>
+          <!--  الديانة السابقة  -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="Religions"
+                    optionLabel="title"
+                    appendTo="body"
+                    formControlName="previousReligion"
+                    [tabindex]="9"
+                    [autoDisplayFirst]="false"
+                  ></p-dropdown>
+                  <label class="required" for="inputtext">
+                    {{ "previousreligion" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('previousReligion')"
+              ></app-print-error>
+            </div>
+          </div>
+        </div>
+
+        <div class="row personal-data d-flex flex-row-reverse py-4">
+          <label class="header">
+            {{ "resedanceandpassportdata" | translate }}
+          </label>
+
+          <!-- تاريخ دخول المملكة -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-calendar
+                    appendTo="body"
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    [touchUI]="true"
+                    formControlName="dateOfEntryKingdom"
+                    [tabindex]="13"
+                  ></p-calendar>
+                  <label class="required" for="inputtext"
+                    >{{ "kingentrydata" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('dateOfEntryKingdom')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- تاريخ  إصدار الاقامة -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-calendar
+                    appendTo="body"
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    [touchUI]="true"
+                    formControlName="residenceIssueDate"
+                    [tabindex]="11"
+                  ></p-calendar>
+                  <label class="required" for="inputtext">
+                    {{ "startpassportdate" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('residenceIssueDate')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!--  تاريخ إصدار الجواز -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-calendar
+                    appendTo="body"
+                    [readonlyInput]="true"
+                    dateFormat="dd/mm/yy"
+                    [touchUI]="true"
+                    formControlName="dateOfPassportIssue"
+                    [tabindex]="15"
+                  ></p-calendar>
+                  <label class="required" for="inputtext"
+                    >{{ "passportstartdate" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('dateOfPassportIssue')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!-- رقم الجواز   -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="passportNumber"
+                    [tabindex]="14"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    minlength="9"
+                    maxlength="9"
+                  />
+                  <label for="inputtext" class="required">
+                    {{ "passportNo" | translate }}
+                  </label>
+                </span>
+              </div>
+              <div
+                *ngIf="form.controls['passportNumber'].touched  && form.errors?.['eitherOrRequired']"
+                class="error"
+              >
+                <span>
+                  {{
+                    "EitherResidenceNumberorPassportNumberisrequired"
+                      | translate
+                  }}.
+                </span>
+              </div>
+              <!-- <app-print-error
+                [control]="form.get('passportNumber')"
+              ></app-print-error> -->
+            </div>
+          </div>
+
+          <!--   رقم الاقامة -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="residenceNumber"
+                    [tabindex]="10"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    minlength="10"
+                    maxlength="10"
+                  />
+                  <label for="inputtext" class="required">
+                    {{ "accommodatationno" | translate }}
+                  </label>
+                </span>
+              </div>
+              <div
+                *ngIf="form.controls['residenceNumber'].touched  && form.errors?.['eitherOrRequired']"
+                class="error"
+              >
+                <span>
+                  {{
+                    "EitherResidenceNumberorPassportNumberisrequired"
+                      | translate
+                  }}.
+                </span>
+              </div>
+              <!-- <app-print-error
+                [control]="form.get('residenceNumber')"
+              ></app-print-error> -->
+            </div>
+          </div>
+
+          <!-- مكان اصدار الاقامة -->
+          <div class="col-12 col-md-4 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <p-dropdown
+                    [options]="ResidencePlaceList"
+                    appendTo="body"
+                    optionLabel="title"
+                    formControlName="residenceIssuePlace"
+                    [tabindex]="8"
+                    [autoDisplayFirst]="false"
+                    [filter]="true"
+                  ></p-dropdown>
+                  <label class="required" for="inputtext">
+                    {{ "accommodationplace" | translate }}</label
+                  >
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('residenceIssuePlace')"
+              ></app-print-error>
+            </div>
+          </div>
+
+          <!--   جهة إصدار الجواز -->
+          <!-- <div class="col-12 col-md-3 basic">
+            <div class="form-group">
+              <div class="field col-12 md:col-4">
+                <span class="p-float-label">
+                  <input
+                    pInputText
+                    type="text"
+                    formControlName="placeOfPassportIssue"
+                    [tabindex]="16"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    minlength="4"
+                    maxlength="20"
+                  />
+                  <label for="inputtext">
+                    {{ "passportauthority" | translate }}
+                  </label>
+                </span>
+              </div>
+              <app-print-error
+                [control]="form.get('placeOfPassportIssue')"
+              ></app-print-error>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row next">
+        <div class="d-none d-lg-block" style="width: 100%">
+          <div class="next-content d-flex justify-content-between">
+            <button
+              class="btn mx-5"
+              type="submit"
+              tabindex="17"
+              [disabled]="form.invalid"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> {{ "next" | translate }} </span>
+            </button>
+
+            <button type="button" class="btn mx-5 back" (click)="BackCustom()">
+              <span> {{ "back" | translate }} </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="d-flex justify-content-between d-lg-none d-md-block small-screen"
+          style="width: 100%"
+        >
+          <div class="next-content d-flex justify-content-between px-5 py-2">
+            <div class="next-back-btn-small next-small">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span> {{ "next" | translate }} </span>
+            </div>
+
+            <div class="next-back-btn-small back" (click)="BackCustom()">
+              <span> {{ "back" | translate }} </span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- </> -->
+</div>

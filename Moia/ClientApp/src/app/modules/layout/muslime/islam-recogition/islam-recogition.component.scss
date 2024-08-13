@@ -1,0 +1,51 @@
+@import "../../../../../scss/Muslime_Style.scss";
+
+
+.form{
+  height: 100%;
+  .contain {
+    height: 100%;
+    .row {
+      width: 100%;
+      height: fit-content;
+    }
+    .form-body{
+      height: 85%;
+    }
+    .form-footer{
+      height: 10%;
+    }
+  }
+}
+
+.basic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  direction: rtl;
+}
+
+.plus-icon {
+  font-size: 16px;
+  color: #b0b0b0;
+  i {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  span {
+    cursor: pointer;
+  }
+}
+
+// .item-style{
+//     font-size: 20px;
+
+//     .checkbox{
+//         width: 20px;
+//     }
+// }

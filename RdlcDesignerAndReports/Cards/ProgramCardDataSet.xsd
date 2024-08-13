@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ProgramCardDataSet" targetNamespace="http://tempuri.org/ProgramCardDataSet.xsd" xmlns:mstns="http://tempuri.org/ProgramCardDataSet.xsd" xmlns="http://tempuri.org/ProgramCardDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ProgramCardDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="ProgramCardDataSet" msprop:Generator_DataSetName="ProgramCardDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_UserTableName="DataTable1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PrgramName" msprop:Generator_ColumnPropNameInRow="PrgramName" msprop:Generator_ColumnPropNameInTable="PrgramNameColumn" msprop:Generator_ColumnVarNameInTable="columnPrgramName" msprop:Generator_UserColumnName="PrgramName" type="xs:string" minOccurs="0" />
+              <xs:element name="ProgramType" msprop:Generator_ColumnPropNameInRow="ProgramType" msprop:Generator_ColumnPropNameInTable="ProgramTypeColumn" msprop:Generator_ColumnVarNameInTable="columnProgramType" msprop:Generator_UserColumnName="ProgramType" type="xs:string" minOccurs="0" />
+              <xs:element name="Code" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_UserColumnName="Code" type="xs:string" minOccurs="0" />
+              <xs:element name="HeaderImage" msprop:Generator_ColumnPropNameInRow="HeaderImage" msprop:Generator_ColumnPropNameInTable="HeaderImageColumn" msprop:Generator_ColumnVarNameInTable="columnHeaderImage" msprop:Generator_UserColumnName="HeaderImage" type="xs:string" minOccurs="0" />
+              <xs:element name="FlagImage" msprop:Generator_ColumnPropNameInRow="FlagImage" msprop:Generator_ColumnPropNameInTable="FlagImageColumn" msprop:Generator_ColumnVarNameInTable="columnFlagImage" msprop:Generator_UserColumnName="FlagImage" type="xs:string" minOccurs="0" />
+              <xs:element name="AuthImage" msprop:Generator_ColumnPropNameInRow="AuthImage" msprop:Generator_ColumnPropNameInTable="AuthImageColumn" msprop:Generator_ColumnVarNameInTable="columnAuthImage" msprop:Generator_UserColumnName="AuthImage" type="xs:string" minOccurs="0" />
+              <xs:element name="Resign" msprop:Generator_ColumnPropNameInRow="Resign" msprop:Generator_ColumnPropNameInTable="ResignColumn" msprop:Generator_ColumnVarNameInTable="columnResign" msprop:Generator_UserColumnName="Resign" type="xs:string" minOccurs="0" />
+              <xs:element name="Inquery" msprop:Generator_ColumnPropNameInRow="Inquery" msprop:Generator_ColumnPropNameInTable="InqueryColumn" msprop:Generator_ColumnVarNameInTable="columnInquery" msprop:Generator_UserColumnName="Inquery" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

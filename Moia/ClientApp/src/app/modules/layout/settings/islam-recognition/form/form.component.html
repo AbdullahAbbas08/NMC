@@ -1,0 +1,51 @@
+<div class="Titles d-flex justify-content-center align-items-center my-4 mt-5">
+  <h3>طرق التعرف على الاسلام</h3>
+</div>
+<div class="main" style="border-radius: 20px">
+  <div class="container">
+    <div class="row pt-4 d-flex flex-row-reverse">
+      <div class="col-12 mb-3">
+        <div class="wrapper" [IsLoadingSpinner]="isLoadingData">
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-12">
+                <div class="">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      pInputText
+                      formControlName="title"
+                      placeholder=" أدخل العنوان"
+                    />
+                    <app-print-error
+                      [control]="form.get('title')"
+                    ></app-print-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-12 col-md-3">
+        <div class="wrapper">
+          <button
+            class="btn-v3 mb-3 py-2 btn-block"
+            [IsLoadingSpinner]="isLoadingBtn"
+            (click)="submit()"
+          >
+            {{ "save" | translate }}
+          </button>
+          <!-- <button class="btn-v2 py-2 btn-block" (click)="onCancel()"> -->
+          <button
+            class="btn-v2 py-2 btn-block"
+            routerLink="/EducationalClassify"
+          >
+            {{ "cancelOnly" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

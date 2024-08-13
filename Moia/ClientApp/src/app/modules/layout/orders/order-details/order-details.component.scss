@@ -1,0 +1,103 @@
+h6 {
+  text-align: right;
+  // font-family: "Almarai-Regular" !important;
+}
+
+.text-center {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  font-family: "Almarai-Bold" !important;
+
+  span {
+    text-align: end;
+    font-family: "Almarai-Regular" !important;
+  }
+}
+
+.contain-item {
+  text-align: end;
+}
+
+.checkbox{
+  width: 25px !important;
+  height:25px !important; 
+}
+
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eye-icon {
+  color: white;
+  font-size: 2rem;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.image-wrapper:hover .image {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.checkbox-style{
+  width:20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
+.form-body{
+  .form-group{
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px;
+    background-color: #fff;
+
+  }
+ 
+
+  .confirmation{
+      margin-bottom: 0;
+      margin-right: 5px;
+      font-size: 17px; 
+      color: #b80606; 
+      margin: 0;
+  }
+}

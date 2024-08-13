@@ -1,0 +1,106 @@
+<div class="Titles d-flex justify-content-center align-items-center py-1">
+  <h4>{{ "newmuslimecard" | translate }}</h4>
+</div>
+<div class="main">
+  <div class="sidebar d-flex justify-content-center align-items-center">
+    <div class="sidebar-child">
+      <ul>
+        <!-- <li [class.active]="isRouteActive('muslime')"> -->
+        <li [class.active]="isRouteActive('muslime')">
+          <div class="item">
+            <span> {{ "MuslimpersonalData" | translate }} </span>
+          </div>
+          <div class="index first-index">
+            <span *ngIf="State > 1; else _1block">
+              <i class="fa-solid fa-circle-check"></i>
+            </span>
+            <ng-template #_1block>
+              <span> 1 </span>
+            </ng-template>
+          </div>
+        </li>
+        <li [class.active]="State == 2">
+          <div class="item">
+            <span> {{ "personalinfo" | translate }} </span>
+          </div>
+          <div class="index">
+            <span *ngIf="State > 2; else _2block"
+              ><i class="fa-solid fa-circle-check"></i
+            ></span>
+            <ng-template #_2block>
+              <span> 2 </span>
+            </ng-template>
+          </div>
+        </li>
+        <li [class.active]="State == 3">
+          <div class="item">
+            <span> {{ "contactdata" | translate }} </span>
+          </div>
+          <div class="index">
+            <span *ngIf="State > 3; else _3block"
+              ><i class="fa-solid fa-circle-check"></i
+            ></span>
+            <ng-template #_3block>
+              <span> 3 </span>
+            </ng-template>
+          </div>
+        </li>
+        <li [class.active]="State == 4">
+          <div class="item">
+            <span> {{ "workandfamily" | translate }} </span>
+          </div>
+          <div class="index">
+            <span *ngIf="State > 4; else _4block"
+              ><i class="fa-solid fa-circle-check"></i
+            ></span>
+            <ng-template #_4block>
+              <span> 4 </span>
+            </ng-template>
+          </div>
+        </li>
+        <li [class.active]="State == 5">
+          <div class="item">
+            <span> {{ "islamrecognitionway" | translate }} </span>
+          </div>
+          <div class="index">
+            <span *ngIf="State > 5; else _5block"
+              ><i class="fa-solid fa-circle-check"></i
+            ></span>
+            <ng-template #_5block>
+              <span> 5 </span>
+            </ng-template>
+          </div>
+        </li>
+        <li [class.active]="State == 6">
+          <div class="item">
+            <span>{{ "attachment" | translate }} </span>
+          </div>
+          <div class="index">
+            <span *ngIf="State > 6; else _6block"
+              ><i class="fa-solid fa-circle-check"></i
+            ></span>
+            <ng-template #_6block>
+              <span> 6 </span>
+            </ng-template>
+          </div>
+        </li>
+        <li [class.active]="State == 7">
+          <div class="item">
+            <span>{{ "confirm" | translate }} </span>
+          </div>
+          <div class="index last-index">
+            <span *ngIf="State > 7; else _7block"
+              ><i class="fa-solid fa-circle-check"></i
+            ></span>
+            <ng-template #_7block>
+              <span> 7 </span>
+            </ng-template>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="body">
+    <router-outlet></router-outlet>
+  </div>
+</div>

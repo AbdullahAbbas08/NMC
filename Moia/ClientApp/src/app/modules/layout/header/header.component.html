@@ -1,0 +1,154 @@
+<div class="header d-none d-lg-block">
+  <div class="row m-0 p-0 d-flex align-items-center">
+    <div class="col-md-9 col-12">
+      <!-- <div class="d-flex align-items-center">
+
+        <ul>
+          <li>
+             <i class="fa-solid fa-power-off"></i>
+            <span class="px-1" (click)="logout()">تسجيل الخروج</span>
+            <button
+              type="button"
+              pButton
+              icon="pi pi-bars"
+              label="Show"
+              (click)="menu.toggle($event)"
+            ></button>
+            <p-menu #menu [popup]="true" [model]="items"></p-menu>
+          </li>
+          <li (click)="navigate()" *appHasPermission="['SuperAdmin']">
+            <i class="fa-solid fa-gear"></i>
+            <span class="px-1">الإعدادات</span>
+          </li>
+          <li class="dropdown" *appHasPermission="['DataEntry', 'SuperAdmin']">
+            <i class="fa-solid fa-angle-down"></i>
+            <span class="px-1">الطلبات</span>
+            <div class="dropdown-content" *appHasPermission="['DataEntry']">
+              <a routerLink="/muslime">إنشاء طلب جديد</a>
+              <a
+                routerLink="/order"
+                *appHasPermission="['DataEntry', 'SuperAdmin']"
+                >إستعراض الطلبات</a
+              >
+              <a routerLink="/order/waiting" *appHasPermission="['DataEntry']"
+                >الطلبات قيد الإنتظار</a
+              >
+              <a routerLink="/order/review" *appHasPermission="['DataEntry']"
+                >طلبات للمراجعة</a
+              >
+              <a
+                routerLink="/order/print"
+                *appHasPermission="['DataEntry', 'SuperAdmin']"
+              >
+                طباعة البطاقات</a
+              >
+            </div>
+          </li>
+
+          <li
+            routerLink="/"
+            *appHasPermission="[
+              'CommitteeManager',
+              'DepartmentManager',
+              'BranchManager'
+            ]"
+          >
+            <span class="px-2">طلبات الموافقة</span>
+          </li>
+          <li routerLink="/">
+            <i class="fa-solid fa-house"></i>
+            <span class="px-2">الرئيسية</span>
+          </li>
+        </ul>
+      </div> -->
+
+      <p-megaMenu [model]="items"></p-megaMenu>
+    </div>
+    <div class="col-md-3 col-12 d-flex justify-content-end align-items-center">
+      <div
+        class="d-flex align-items-center"
+        (click)="GoToDefault()"
+        style="cursor: pointer"
+      >
+        <img src="./../../../../assets/images/logo.png" alt="Website Logo" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between d-lg-none d-md-block small-screen">
+  <div class="header-body-small">
+    <p-sidebar [(visible)]="sidebarVisible" [fullScreen]="true">
+      <div class="small-header">
+        <div class="row w-100">
+          <div class="col-12">
+            <div class="col-12 d-flex justify-content-center">
+              <img
+                class="large"
+                src="./../../../../assets/images/logo.png"
+                alt="Website Logo"
+              />
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-center my-5">
+            <ul>
+              <li class="mt-5">
+                <i class="fa-solid fa-power-off"></i>
+                <span> تسجيل الخروج </span>
+              </li>
+
+              <li routerLink="/">
+                <i class="fa-solid fa-house"></i>
+                <span>الرئيسية</span>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-gear"></i>
+                <span>الإعدادات</span>
+              </li>
+
+              <li class="">
+                <div class="dropdown">
+                  <span
+                    class="dropdown-toggle"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    الطلبات
+                  </span>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a>إنشاء طلب جديد</a>
+                    <a>إستعراض الطلبات</a>
+                    <a>الطلبات قيد الإنتظار</a>
+                    <a>طلبات للمراجعة</a>
+                    <a> طباعة البطاقات</a>
+                  </div>
+                </div>
+
+                <!-- <div class="dropdown-content">
+                  <a>إنشاء طلب جديد</a>
+                  <a>إستعراض الطلبات</a>
+                  <a>الطلبات قيد الإنتظار</a>
+                  <a>طلبات للمراجعة</a>
+                </div> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </p-sidebar>
+    <p-button (click)="sidebarVisible = true" icon="pi pi-th-large"></p-button>
+  </div>
+  <div class="logo-small d-flex align-items-center bg-danger">
+    <img
+      src="./../../../../assets/images/logo.png"
+      height="40px"
+      alt="Website Logo"
+    />
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '70vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h3>{{'confirmation'|translate}}</h3>
+    </div>
+  </ng-template>
+  <div class="row dialog">
+    <div class="row content d-flex justify-content-center align-items-end px-4 form-body">
+        <div class=" form-group d-flex justify-content-center align-items-start text-center">
+          <label class="confirmation px-2" for="confirmation">{{ "orderApprovalForMuslim" | translate }}</label>
+          <p-checkbox
+          [(ngModel)]="isChecked"
+            [binary]="true" 
+    inputId="confirmation">
+          </p-checkbox>
+        </div>
+      </div>
+      <div class="row w-100">
+        <div class="col-12 d-flex align-items-center W-100 py-2">
+          <div class="d-flex justify-content-center w-100">
+            <button type="button" class="btn btn-success mx-2" (click)="_confirm()" [disabled]="!isChecked" >{{'confirm' | translate}}</button>
+            <button type="button" class="btn btn-danger" (click)="cancel()">{{'cancel' | translate}}</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</p-dialog>

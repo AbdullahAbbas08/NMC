@@ -1,0 +1,25 @@
+h6 {
+  text-align: right;
+  // font-family: "Almarai-Regular" !important;
+}
+
+.text-center {
+  display: flex;
+  justify-content: end;
+  text-align: end;
+  font-family: "Almarai-Bold" !important;
+
+  span {
+    text-align: end;
+    font-family: "Almarai-Regular" !important;
+  }
+}
+
+.contain-item {
+  text-align: end;
+}
+
+.checkbox{
+  width: 25px !important;
+  height:25px !important; 
+}

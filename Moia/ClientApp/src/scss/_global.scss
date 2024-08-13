@@ -1,0 +1,110 @@
+@import "./mixins.scss";
+
+@font-face {
+  font-family: "Almarai-Regular";
+  src: url("../assets/Almarai/Almarai-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Almarai-Bold";
+  src: url("../assets/Almarai/Almarai-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  overflow-y: auto;
+  background: var(--bg-grey);
+  font-size: 16px;
+  font-family: "Almarai-Regular" !important;
+  @include scrollbarStyle;
+
+}
+
+@media (max-width: 1024px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.spinner-overlay {
+  background: var(--bg-spinner-overlay);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.spinner-overlay-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1800px;
+}
+
+.site-color-1 {
+  color: var(--site-color-1);
+}
+.site-color-2 {
+  color: var(--site-color-2);
+}
+.site-color-3 {
+  color: var(--site-color-3);
+}
+
+.bg-primary {
+  background: var(--primary-color);
+}
+
+.bg-danger {
+  background: var(--danger-color);
+}
+
+.bg-success {
+  background: var(--success-color);
+}
+
+.font-primary {
+  color: var(--primary-color) !important;
+}
+
+.font-danger {
+  color: var(--danger-color) !important;
+}
+
+.font-success {
+  color: var(--success-color) !important;
+}
+
+.text-grey {
+  color: var(--text-grey) !important;
+}
+
+.text-grey-2 {
+  color: var(--text-grey-2) !important;
+}

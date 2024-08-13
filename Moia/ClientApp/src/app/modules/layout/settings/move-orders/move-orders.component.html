@@ -1,0 +1,323 @@
+<div class="Titles d-flex justify-content-center align-items-center">
+  <h3>{{ "MoveOrdersList" | translate }}</h3>
+</div>
+<div class="main bg-white" style="overflow-y: auto">
+  <div class="row pt-2 mx-0" style="overflow-y: auto">
+    <!-- table -->
+    <div class="col-12">
+      <div>
+        <p-table
+          [value]="entities ? entities : []"
+          [resizableColumns]="true"
+          styleClass="p-datatable-gridlines"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="caption">
+            <div class="row d-flex flex-row-reverse">
+              <div class="col-12 col-md-10 d-flex align-items-center">
+                <input
+                  pInputText
+                  class="form-control py-3 dir-input"
+                  type="text"
+                  placeholder="{{ 'Search' | translate }}"
+                  [formControl]="searchTermControl"
+                />
+              </div>
+            
+              <!-- search with committee -->
+              <div
+                class="col-12 col-md-4 basic pt-4"
+                *appHasPermission="['SuperAdmin']"
+              >
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <p-dropdown
+                        [options]="CommitteeList"
+                        [(ngModel)]="Filter.com"
+                        (filter)="(true)"
+                        [showClear]="true"
+                        [filter]="true"
+                        filterBy="title"
+                        optionLabel="title"
+                        optionValue="id"
+                        appendTo="body"
+                        [autoDisplayFirst]="false"
+                        (onChange)="filterFn()"
+                      ></p-dropdown>
+                      <label for="inputtext"
+                        >{{ "chooseCommittee" | translate }}
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- search with branch -->
+              <div
+                class="col-12 col-md-4 basic pt-4"
+                *appHasPermission="['SuperAdmin']"
+              >
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <p-dropdown
+                        [options]="BranchList"
+                        [(ngModel)]="Filter.brn"
+                        (filter)="(true)"
+                        [showClear]="true"
+                        [filter]="true"
+                        filterBy="title"
+                        optionLabel="title"
+                        optionValue="id"
+                        appendTo="body"
+                        [autoDisplayFirst]="false"
+                        (onChange)="filterFn()"
+                      ></p-dropdown>
+                      <label for="inputtext">{{ "branch" | translate }} </label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-12 col-md-4 basic pt-4"
+                *appHasPermission="['SuperAdmin']"
+              >
+                <div class="form-group">
+                  <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                      <p-dropdown
+                        [options]="AllRoles"
+                        [(ngModel)]="Filter.role"
+                        (filter)="(true)"
+                        [showClear]="true"
+                        [filter]="true"
+                        filterBy="title"
+                        optionLabel="nameAr"
+                        optionValue="id"
+                        appendTo="body"
+                        [autoDisplayFirst]="false"
+                        (onChange)="filterFn()"
+                      ></p-dropdown>
+                      <label for="inputtext"
+                        >{{ "chooserole" | translate }}
+                      </label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr style="font-family: 'Almarai-Regular' !important">
+              <th style="width: 15%">
+                <div class="d-flex justify-content-center">
+                  {{ "settings" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "email" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "mobile" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "identity" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "RoleTitle" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "username" | translate }}
+                </div>
+              </th>
+              <th>
+                <div class="d-flex justify-content-center">
+                  {{ "name" | translate }}
+                </div>
+              </th>
+
+              <th style="width: 5%">
+                <div class="d-flex justify-content-center">
+                  {{ "index" | translate }}
+                </div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-entity let-rowIndex="rowIndex">
+            <tr style="font-family: 'Almarai-Regular' !important">
+              <!-- carType -->
+
+              <td>
+                <div class="d-flex justify-content-center" (click)="TransfereOrder(entityType(entity))">
+                
+                  <!-- <i
+                    class="fa-solid fa-pen-to-square mr-3 cursor-pointer font-primary px-3 state"
+                    (click)="Edit(entityType(entity).id)"
+                  ></i> -->
+
+                  <i style="cursor: pointer;" class="fa-solid fa-money-bill-transfer cursor-pointer font-primary px-3 state"  
+                     pTooltip="{{'moveOrder'|translate}}" 
+                     tooltipPosition="top" ></i>
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).email }}
+                </div>
+              </td>
+
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).mobile }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).identity }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).roleTitle }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).userName }}
+                </div>
+              </td>
+              <td>
+                <div class="d-flex justify-content-center">
+                  {{ entityType(entity).name }}
+                </div>
+              </td>
+              <td style="width: 5%">
+                <div class="d-flex justify-content-center">
+                  {{ rowIndex + 1 }}
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template #skeletonblock class="row col-12 bg-info">
+            <div class="custom-skeleton">
+              <div class="skeleton-items">
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+                <p-skeleton></p-skeleton>
+              </div>
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="col-12 d-flex justify-content-center my-5" *ngIf="count == 0">
+      <div class="alert alert-danger">
+        <h3>{{ "NoDataFound" | translate }}</h3>
+      </div>
+    </div>
+  </div>
+  <!-- pagination -->
+  <div class="row p-0 m-0 mb-1 paginate" *ngIf="count != 0">
+    <div class="col-12">
+      <p-paginator
+        [rows]="pageSize"
+        [totalRecords]="count"
+        [rowsPerPageOptions]="pageSizeOptions"
+        (onPageChange)="getData($event)"
+        [dropdownAppendTo]="'body'"
+      ></p-paginator>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="display"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="d-flex justify-content-center w-100">
+      <h4>{{ "AssignMissedOrdersintoUser" | translate }}</h4>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="body" >
+    <div class="row custom-section" *ngIf="relatedUsers.length > 0; else OrderNotFound">
+      <div class="col-12 basic py-2">
+        <div class="form-group">
+          <div class="field col-12">
+            <span class="p-float-label">
+              <p-dropdown
+                [options]="relatedUsers"
+                [(ngModel)]="selectedUserToTransfereOrders"
+                (filter)="(true)"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="title"
+                optionLabel="title"
+                appendTo="body"
+                [autoDisplayFirst]="false"
+                (onChange)="filterFn()"
+              ></p-dropdown>
+              <label for="inputtext"
+                >{{ "selectUserToTransfer" | translate }}
+              </label>
+            </span>
+          </div>
+          <!-- <div class="form-group d-flex justify-content-center align-items-center pt-3">
+            <p-checkbox
+            [binary]="true"
+            [(ngModel)]="isChecked"
+            name="confirmation"
+             
+              inputId="confirmation">
+            </p-checkbox>
+            <label class="confirmation" for="confirmation">{{ "orderApprovalForMuslim" | translate }}</label>
+
+          </div> -->
+        </div>
+      </div>
+      <div class="col-12 pb-3 d-flex justify-content-center">
+        <div>
+          <button
+            type="button"
+            [disabled] ="!selectedUserToTransfereOrders" 
+            class="btn btn-info px-3 py-1 mx-1"
+            (click)="SetOrderTransfere()"
+          >
+            {{ "AssignOrder" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #OrderNotFound>
+      <div class="row custom-section">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <p style="color: #d50707;"> 
+            <b>
+              {{'NoOrderFoundToTransfere' | translate}}
+            </b></p>
+        </div>
+      </div>
+  </ng-template>
+  </ng-template>
+
+</p-dialog>
+

@@ -1,0 +1,27 @@
+.checkbox-style{
+    width:20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  
+  .form-body{
+    .form-group{
+      border: 1px solid #bbb;
+      border-radius: 5px;
+      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      margin: 16px;
+      background-color: #fff;
+  
+    }
+   
+  
+    .confirmation{
+        margin-bottom: 0;
+        margin-right: 5px;
+        font-size: 17px; 
+        color: #333; 
+        margin: 0;
+    }
+  }

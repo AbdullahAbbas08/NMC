@@ -1,0 +1,55 @@
+@import "../../../../../scss/Muslime_Style.scss";
+
+.form {
+  height: 100%;
+  .contain {
+    height: 100%;
+    .form-body {
+      height: 85%;
+    }
+    .form-footer {
+      height: 10%;
+    }
+  }
+}
+
+.personal-data {
+  position: relative;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 30px;
+  height: fit-content;
+  // background-color: #333;
+  padding: 10px;
+  border: 1px solid #bbbbbb;
+  border-radius: 15px;
+
+  .header {
+    color: #6c6c6c;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: absolute;
+    z-index: 1;
+    top: -14px;
+    right: 10px;
+    user-select: none;
+  }
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+
+// .required {
+//   &::after {
+//     content: " * ";
+//     color: red;
+//     position: absolute;
+//     top: 10%;
+//     left: -15%;
+//     font-size: 25px;
+//   }
+// }

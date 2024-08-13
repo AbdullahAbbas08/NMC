@@ -1,0 +1,79 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../../../assets/images/BackgroundLogin.png");
+}
+
+.header {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  color: #7e7c7c !important;
+}
+
+.p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #960000 !important;
+  color: #343a40;
+  padding: 1.5rem;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+// .login-section {
+//   height: 100vh;
+//   overflow-y: auto;
+//   background-color: rgba(11, 11, 11, 0.5);
+//   background-image: url("../../../../assets/images/backgroundlogo.jpg");
+// }
+
+.login-section {
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.login-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url("../../../../assets/images/backgroundlogo.jpg");
+  opacity: 0.5;
+}
+
+.card-login {
+  background-color: #fff;
+  border-radius: 15px;
+  z-index: 1000;
+  width: 70%;
+}
+
+.dir-input {
+  direction: rtl;
+}
+
+.submit {
+  border: 1px solid green;
+  color: green;
+  font-weight: bold;
+  width: 95%;
+}
+
+.icon-inside-input {
+  position: absolute;
+  top: 14px;
+  left: 31px;
+}
+
+.icon-style {
+  font-size: 22px;
+  color: #969696;
+}
+.without-cursor {
+  pointer-events: none !important;
+}
+.with-cursor {
+  cursor: pointer;
+}

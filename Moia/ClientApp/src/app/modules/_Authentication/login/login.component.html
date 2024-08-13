@@ -1,0 +1,263 @@
+<div class="wrapper">
+  <div class="row flex-row-reverse">
+    <div
+      class="col-12 mx-0 px-0 d-flex align-items-center justify-content-center login-section"
+    >
+      <div class="card-login py-3 px-5 bg-white">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <img src="../../../../assets/images/SystemLogo.png" />
+          </div>
+          <div class="col-12 d-flex justify-content-center my-sm-3">
+            <h3 class="header">{{ "projecttitle" | translate }}</h3>
+          </div>
+        </div>
+
+        <div class="row d-flex flex-row-reverse py-3">
+          <!-- Form -->
+          <div
+            class="col-12 col-md-8 d-flex align-items-center justify-content-center"
+          >
+            <div class="col-12 d-flex justify-content-center form">
+              <div class="col-12 d-flex justify-content-center form">
+                <!-- **************** Login ***************** -->
+                <form
+                  [formGroup]="loginForm"
+                  (ngSubmit)="onSubmit()"
+                  *ngIf="Login_MODE"
+                >
+                  <div class="row">
+                    <!-- username -->
+                    <div class="col-12">
+                      <div class="form-group">
+                        <div class="field col-12 md:col-4">
+                          <span class="p-float-label">
+                            <input
+                              class="form-control"
+                              id="name"
+                              type="text"
+                              placeholder=""
+                              required="required"
+                              formControlName="username"
+                              pInputText
+                            />
+                            <label for="inputtext">
+                              {{ "username" | translate }}</label
+                            >
+                          </span>
+                          <i
+                            class="fa-solid fa-user icon-inside-input icon-style"
+                          ></i>
+                        </div>
+                        <app-print-error
+                          [control]="loginForm.get('username')"
+                        ></app-print-error>
+                      </div>
+                    </div>
+                    <!-- password -->
+                    <img src="" />
+                    <div class="col-12 pt-3">
+                      <div class="form-group">
+                        <div class="field col-12 md:col-4">
+                          <span class="p-float-label">
+                            <p-password
+                              inputId="password"
+                              id="password"
+                              type="password"
+                              [feedback]="false"
+                              required="required"
+                              formControlName="password"
+                            ></p-password>
+                            <label for="password">{{
+                              "password" | translate
+                            }}</label>
+                          </span>
+                          <i
+                            class="fa-solid fa-lock icon-inside-input icon-style"
+                          ></i>
+                        </div>
+                        <app-print-error
+                          [control]="loginForm.get('password')"
+                        ></app-print-error>
+                      </div>
+                    </div>
+                    <!-- submit -->
+                    <div class="col-12 pt-3">
+                      <div class="d-flex justify-content-center">
+                        <button
+                          type="submit"
+                          class="btn form-control text-center submit"
+                          [IsLoadingSpinner]="isLoading"
+                          [disabled]="loginForm.invalid"
+                        >
+                          {{ "login" | translate }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- *************** OTP ********************* -->
+                <form
+                  [formGroup]="OTPForm"
+                  (ngSubmit)="CheckOTP()"
+                  *ngIf="OTP_MODE"
+                >
+                  <div class="row">
+                    <!-- username -->
+                    <div class="col-12">
+                      <div class="form-group">
+                        <div class="field col-12 md:col-4">
+                          <span class="p-float-label">
+                            <input
+                              class="form-control"
+                              id="name"
+                              type="text"
+                              placeholder=""
+                              required="required"
+                              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                              minlength="4"
+                              maxlength="4"
+                              formControlName="otp"
+                              pInputText
+                            />
+                            <label for="inputtext"
+                              >{{ "sentCode" | translate }}
+                            </label>
+                          </span>
+                          <i
+                            class="fa-solid fa-key icon-inside-input icon-style"
+                          ></i>
+                        </div>
+                        <app-print-error
+                          [control]="OTPForm.get('otp')"
+                        ></app-print-error>
+                      </div>
+                    </div>
+
+                    <!-- submit -->
+                    <div class="col-12 pt-3">
+                      <div class="d-flex justify-content-center">
+                        <button
+                          type="submit"
+                          class="btn form-control text-center submit"
+                          [IsLoadingSpinner]="isLoading"
+                          [disabled]="loginForm.invalid"
+                        >
+                          {{ "login" | translate }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- *************** Reset ********************* -->
+                <form
+                  [formGroup]="ResetPassForm"
+                  (ngSubmit)="CheckPass()"
+                  *ngIf="ResetPass_MODE"
+                >
+                  <div class="row">
+                    <!-- password -->
+                    <div class="col-12 pt-3">
+                      <div class="form-group">
+                        <div class="field col-12 md:col-4">
+                          <span class="p-float-label">
+                            <p-password
+                              inputId="password"
+                              id="password"
+                              type="password"
+                              [feedback]="false"
+                              required="required"
+                              formControlName="newPassword"
+                            ></p-password>
+                            <label for="password">
+                              {{ "insertnewpassword" | translate }}</label
+                            >
+                          </span>
+                          <i
+                            class="fa-solid fa-lock icon-inside-input icon-style"
+                          ></i>
+                          <div style="max-width: fit-content">
+                            <app-print-error
+                              [control]="ResetPassForm.get('newPassword')"
+                              [patternKey]="'reNewPasswordError'"
+                            ></app-print-error>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+                      <div class="form-group">
+                        <div class="field col-12 md:col-4">
+                          <span class="p-float-label">
+                            <p-password
+                              inputId="password12"
+                              id="password"
+                              type="password"
+                              [feedback]="false"
+                              required="required"
+                              formControlName="reNewPassword"
+                            ></p-password>
+                            <label for="password">
+                              {{ "reinsertnewpassword" | translate }}
+                            </label>
+                          </span>
+                          <i
+                            class="fa-solid fa-lock icon-inside-input icon-style"
+                          ></i>
+                          <span>
+                            <app-print-error
+                              [control]="ResetPassForm.get('reNewPassword')"
+                            ></app-print-error>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- submit -->
+                    <div class="col-12 pt-3">
+                      <div class="d-flex justify-content-center">
+                        <button
+                          type="submit"
+                          [ngClass]="
+                            ResetPassForm.invalid
+                              ? 'without-cursor'
+                              : 'with-cursor'
+                          "
+                          class="btn form-control text-center submit"
+                          [IsLoadingSpinner]="isLoading"
+                        >
+                          {{ "changepassword" | translate }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Logo Image  -->
+          <div
+            class="col-12 col-md-4 d-flex align-items-center justify-content-center"
+          >
+            <div class="d-none d-lg-block">
+              <img src="../../../../assets/images/LoginImage.png" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row py-3">
+          <div class="col-12 d-flex justify-content-center">
+            <img src="../../../../assets/images/Vision2030Image.png" />
+          </div>
+          <div class="col-12 d-flex justify-content-center pt-3">
+            <span>{{ "copywrights" | translate }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="container" style="background-color: #ddd">
+  <div class="row">
+    <div class="col-12 py-3" style="height: 15%">
+      <div class="my-2 ">
+      
+        <p-card>
+
+          <div class="card-content d-flex justify-content-between align-items-center">
+            <div class="vision-img ">
+              <img src="../../../../../assets/images/2030-vision.jpg" alt="">
+            </div>
+            <h3 class="py-3 px-2" style="font-weight: bold; text-align: center">
+              إستعلام عن بطاقة مسلم
+            </h3>
+
+            <div class="identity-img ">
+              <img src="../../../../../assets/images/MOIA-logo.png" alt="">
+    
+    
+            </div>
+
+          </div>
+         
+        </p-card>
+      
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="main-query">
+        <div class="card">
+          <div class="row">
+            <div class="col-12" style="height: 100%">
+              <div
+                class="query-body d-flex align-items-start justify-content-center"
+              >
+                <div class="contain" *ngIf="UserData">
+                  <!-- <p-card> -->
+                  <div class="row d-flex flex-row-reverse">
+                    <div
+                      *ngFor="
+                        let item of [
+                          {
+                            label: 'الاسم بعد الإسلام',
+                            value: UserData.nameAfter
+                          },
+                          {
+                            label: '( En ) الاسم بعد الإسلام',
+                            value: UserData.nameAfterEn
+                          },
+                          {
+                            label: 'الاسم قبل الإسلام',
+                            value: UserData.nameBeforeAr
+                          },
+                          {
+                            label: 'تاريخ الدخول فى الإسلام',
+                            value: UserData.islamDate | date
+                          },
+                          { label: 'الجنسية', value: UserData.nationality },
+                          {
+                            label: 'محل الميلاد',
+                            value: UserData.placeOfBirth
+                          },
+                          {
+                            label: 'تاريخ دخول المملكة',
+                            value: UserData.dateOfEntryKingdom | date
+                          },
+                          {
+                            label: 'الديانة السابقة',
+                            value: UserData.previousReligion
+                          },
+                          { label: 'المدينة', value: UserData.city },
+                          {
+                            label: 'رقم الجواز',
+                            value: UserData.passportNumber
+                          },
+                          { label: 'المنطقة', value: UserData.region },
+                          {
+                            label: 'رقم الإقامة',
+                            value: UserData.residenceNumber
+                          }
+                        ]
+                      "
+                      class="col-12 col-md-6 text-center py-2"
+                    >
+                      <!-- { label: 'الشارع', value: UserData.street }, -->
+                      <div class="contain-item">
+                        <h6 class="font-bold" style="font-weight: bold">
+                          {{ item.label }}
+                        </h6>
+                        <span class="">{{ item.value }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- </p-card> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

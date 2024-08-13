@@ -1,0 +1,11 @@
+﻿global using AutoMapper;
+global using Hangfire;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Configuration;
+global using Moia.BL.Services;
+global using Moia.DAL.databaseContext;
+global using Moia.Shared.ViewModels;
+global using System;
+global using System.DirectoryServices;
+global using System.DirectoryServices.AccountManagement;

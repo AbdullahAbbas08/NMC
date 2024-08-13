@@ -1,0 +1,159 @@
+<div class="Titles d-flex justify-content-center align-items-center">
+  <h3>بيانات عن الحساب</h3>
+</div>
+<div class="main bg-white" style="overflow-y: auto; z-index: 1000">
+  <div class="row pt-2 mx-0 my-3" style="overflow-y: auto">
+    <!-- table -->
+    <div class="col-12">
+      <div>
+        <!-- body -->
+        <p-accordion>
+          <p-accordionTab [selected]="true" header=" بيانات شخصية" style="font-family: 'Almarai-Bold' !important">
+            <div class="row d-flex flex-row-reverse">
+              <div class="col-12 col-md-6 text-center py-2">
+                <div class="contain-item">
+                  <h6 class="" style="font-family: 'Almarai-Bold' !important">
+                    الدور الوظيفى
+                  </h6>
+                  <span style="font-family: 'Almarai-Regular' !important">
+                    {{ Permission[0] ?? "لا يوجد" }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 text-center py-2">
+                <div class="contain-item">
+                  <h6 class="" style="font-family: 'Almarai-Bold' !important">
+                    الاسم
+                  </h6>
+                  <span style="font-family: 'Almarai-Regular' !important">
+                    {{ User?.Name ?? "لا يوجد" }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 text-center py-2">
+                <div class="contain-item">
+                  <h6 class="" style="font-family: 'Almarai-Bold' !important">
+                    رقم الهوية
+                  </h6>
+                  <span style="font-family: 'Almarai-Regular' !important">
+                    {{ User?.Identity ?? "لا يوجد" }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 text-center py-2">
+                <div class="contain-item">
+                  <h6 class="" style="font-family: 'Almarai-Bold' !important">
+                    أسم المستخدم
+                  </h6>
+                  <span style="font-family: 'Almarai-Regular' !important">
+                    {{ User?.UserName ?? "لا يوجد" }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 text-center py-2">
+                <div class="contain-item">
+                  <h6 class="" style="font-family: 'Almarai-Bold' !important">
+                    رقم الجوال
+                  </h6>
+                  <span style="font-family: 'Almarai-Regular' !important">
+                    {{ User?.Mobile ?? "لا يوجد" }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 text-center py-2">
+                <div class="contain-item">
+                  <h6 class="" style="font-family: 'Almarai-Bold' !important">
+                    البريد الإلكترونى
+                  </h6>
+                  <span style="font-family: 'Almarai-Regular' !important">
+                    {{ User?.Email ?? "لا يوجد" }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab style="font-family: 'Almarai-Bold' !important" header=" تفويض" *appHasPermission="[
+              'DepartmentManager',
+              'BranchManager',
+              ]">
+              <!-- 'SuperAdmin' -->
+            <form [formGroup]="form" (ngSubmit)="NegoiateUser()">
+              <!-- body -->
+              <div class="col-12 pt-2 col-md-12 basic">
+                <div class="field col-12 md:col-12 px-0">
+                  <span class="p-float-label">
+                    <p-multiSelect [options]="UsersList" [filter]="true" optionLabel="title" appendTo="body"
+                      formControlName="title"></p-multiSelect>
+                    <label for="inputtext"> أختر من القائمة الشخص الموفض</label>
+                  </span>
+                </div>
+                <app-print-error [control]="form.get('title')"></app-print-error>
+              </div>
+              <div class="col-12 d-flex justify-content-center my-2">
+                <button class="btn btn-success" [disabled]="form.invalid">
+                  <span class="px-5 py-2"> تفويض </span>
+                </button>
+              </div>
+            </form>
+          </p-accordionTab>
+          <p-accordionTab style="font-family: 'Almarai-Bold' !important" header=" تغيير كلمة المرور"
+            *appHasPermission="['DataEntry', 'CommitteeManager', 'SuperAdmin']">
+            <form [formGroup]="ChangePasswordform" (ngSubmit)="changePassword()">
+              <div class="row d-flex flex-row-reverse">
+                <div class="col-12 col-md-6 basic">
+                  <div class="form-group">
+                    <div class="field col-12 md:col-6">
+                      <span class="p-float-label">
+                        <input pInputText type="password" formControlName="oldPassword" />
+                        <label for="inputtext"> كلمة المرور القديمة</label>
+                      </span>
+                    </div>
+                    <app-print-error [control]="ChangePasswordform.get('oldPassword')"></app-print-error>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 basic">
+                  <div class="form-group">
+                    <div class="field col-12 md:col-6 px-0">
+                      <span class="p-float-label">
+                        <div class="field col-12 mx-0 px-0">
+                          <span class="p-float-label">
+                            <p-password placeholder="أدخل كلمة المرور الجديدة" minlength="6" maxlength="100"
+                              appendTo="body" formControlName="newPassword" tabindex="6"
+                              [toggleMask]="true"></p-password>
+                          </span>
+                        </div>
+                        <label for="inputtext"></label>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center py-2">
+                  <button class="btn btn-success px-3 py-2 mx-2" [disabled]="ChangePasswordform.invalid">
+                    تغيير
+                  </button>
+                </div>
+              </div>
+            </form>
+          </p-accordionTab>
+          <p-accordionTab style="font-family: 'Almarai-Bold' !important" header="حفظ التوقيع"
+            *appHasPermission="['BranchManager']">
+            <div class="row">
+              <div class="col-12">
+
+                <p-fileUpload name="demo[]" url="/api/User/InsertUserSignature" chooseLabel="أختر التوقيع"
+                  cancelLabel="إلغاء" uploadLabel="إرسال" (onUpload)="onUpload($event)" [multiple]="false"
+                  accept="image/*">
+                  <ng-template pTemplate="content">
+                    <ul *ngIf="uploadedFiles.length">
+                      <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                    </ul>
+                  </ng-template>
+                </p-fileUpload>
+              </div>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+  </div>
+</div>

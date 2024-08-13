@@ -1,0 +1,99 @@
+
+.form{
+
+    height: 100%;
+    .contain {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 39px;
+      .row {
+        width: 100%;
+        height: 50%;
+        gap: 20px;
+        @media(max-width:1210px){
+          height: 62%;
+        }
+       
+      }
+      .form-body{
+        .form-group{
+          border: 1px solid #bbb;
+          border-radius: 5px;
+          box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+          padding: 16px;
+          margin: 16px;
+          background-color: #fff;
+
+        }
+       
+
+        .confirmation{
+            margin-bottom: 0;
+            margin-right: 5px;
+            font-size: 17px; 
+            color: #b80606; 
+            margin: 0;
+
+             
+        }
+      }
+      .form-footer {
+height: 50%;  
+align-items: flex-end;  
+@media(max-width:1210px){
+  height: 24%;
+}
+@media(max-width:1244px){
+  height: 24%;
+}
+
+
+  }
+
+      @media (min-width: 1360px) { /* Adjust the breakpoint as needed */
+        .form-footer {
+          gap: 45px; /* Adjust the gap value as needed */
+        }
+      }
+    
+}
+}
+
+  
+  .row.content {
+    padding: 16px;
+   
+    margin: 8px;
+  
+  }
+  
+  .form-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; // Space between label and checkbox
+  }
+
+  
+  // Style the checkbox to ensure it aligns well
+  p-checkbox {
+    .p-checkbox-box {
+      width: 1.5rem; // Adjust size of the checkbox
+      height: 1.5rem; // Adjust size of the checkbox
+    }
+  
+    .p-checkbox-icon {
+      font-size: 1rem; // Adjust size of the checkmark icon
+    }
+  }
+
+
+  
+ 
+  
+  
+
+
+    

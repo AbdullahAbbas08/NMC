@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="form">
+    <div class="contain">
+      <div class="row content form-body">
+        <div class="row my-5 d-flex flex-row-reverse align-items-center h-100">
+          <div class="row d-flex flex-row-reverse mx-2">
+            <div class="d-flex flex-row-reverse col-12">
+              <p>
+                {{ "howrecognizeonislam" | translate }}
+              </p>
+            </div>
+            <div
+              class="col-12 col-md-4 d-flex justify-content-end py-2"
+              *ngFor="let item of IslamRecognitionWays"
+            >
+              <label [for]="item.id" class="px-3">{{ item.title }}</label>
+              <p-checkbox
+                name="group2"
+                value="item"
+                [value]="item"
+                [(ngModel)]="selectedItems"
+                [inputId]="item.id.toString()"
+              ></p-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row next form-footer d-flex justify-content-between">
+        <button
+          class="btn mx-5"
+          [disabled]="selectedItems.length == 0"
+          (click)="submit()"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+          <span> {{ "next" | translate }} </span>
+        </button>
+        <button type="button" class="btn mx-5 back" (click)="Back()">
+          <span> {{ "back" | translate }} </span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
